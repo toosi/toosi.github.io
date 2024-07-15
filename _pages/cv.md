@@ -5,4 +5,4 @@ layout: single
 author_profile: true
 ---
 
-[Download my CV](assets/files/Tahereh_Toosi_CV.pdf)
+[Download my CV](assets/Tahereh_CV_2024_wo_references.pdf)
