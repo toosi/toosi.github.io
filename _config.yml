@@ -310,3 +310,10 @@ compress_html:
   clippings: all
   ignore:
     envs: development
+
+# Add this section to define the navigation links
+header_pages:
+  - about.md
+  - publications.md
+  - talks.md
+  - cv.md
