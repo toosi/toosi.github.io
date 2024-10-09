@@ -4,6 +4,7 @@ permalink: /about/
 layout: single
 author_profile: true
 ---
+![Profile Picture](/assets/profile.jpeg)
 
 ## Appointments
 - **Associate Research Scientist**, Center for Theoretical Neuroscience, Columbia University, 2022 – Present
@@ -18,8 +19,5 @@ author_profile: true
   - Advisor: Prof. Ehsan Arabzadeh
 - **Visiting Graduate Student**, Massachusetts Institute of Technology, 2014 – 2015
   - Advisor: Prof. James J. DiCarlo
-- **MSc in Biomedical Engineering**, Iran University of Science and Technology, 2009
-  - Advisor: Prof. Hamid Behnam
-- **BSc in Electrical Engineering**, Ferdowsi University of Mashhad, 2006
-  - Advisor: Prof. Reza Lotfi
+
 
