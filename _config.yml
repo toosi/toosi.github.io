@@ -82,7 +82,7 @@ analytics:
 # Site Author
 author:
   name             : "Tahereh Toosi"
-  avatar           : "assets/profile.jpeg"
+  avatar           : "/assets/profile.jpeg"
   bio              : "Associate Research Scientist at Center for Theoretical Neuroscience, Columbia University"
   location         : "New York, NY"
   employer         :
