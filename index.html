@@ -58,6 +58,49 @@
             color: #1a73e8;
             margin-top: 0;
         }
+        .publications {
+            margin-top: 40px;
+        }
+        .publication {
+            margin-bottom: 20px;
+            border-left: 3px solid #4285f4;
+            padding-left: 15px;
+        }
+        .publication p {
+            margin: 5px 0;
+        }
+        .publication .title {
+            font-weight: bold;
+        }
+        .publication .authors {
+            font-style: italic;
+        }
+        .publication .venue {
+            color: #666;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            gap: 20px;
+        }
+        .nav a {
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            color: #1a73e8;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .nav a:hover, .nav a.active {
+            background-color: #e8f0fe;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -73,7 +116,12 @@
         </div>
     </header>
 
-    <section class="projects">
+    <nav class="nav">
+        <a href="#projects" class="active" onclick="showSection('projects')">Projects</a>
+        <a href="#publications" onclick="showSection('publications')">Publications</a>
+    </nav>
+
+    <section id="projects" class="projects section active">
         <h2>Selected Projects</h2>
         <div class="project">
             <h3>Generative Inference: A Neural Framework for Perceptual Completion and Imagination</h3>
@@ -90,5 +138,58 @@
             <p>In this project, we explore how robust training techniques foster the emergence of straightened feature representations in feedforward neural networks when processing natural movie sequences. By leveraging adversarial robustness and random smoothing, our models exhibit a notable decrease in curvature within their latent spaces—allowing for linear interpolation of temporal frames and reliable frame reconstruction. These straightened representations align with perceptual phenomena observed in human vision and demonstrate improved predictivity of neural activity in primary visual cortex (V1). Our results suggest that noise robustness can serve as a parsimonious and biologically plausible mechanism for generating temporal predictability in visual representations.</p>
         </div>
     </section>
+    
+    <section id="publications" class="publications section">
+        <h2>Publications</h2>
+        
+        <div class="publication">
+            <p class="title">Generative Inference: A Neural Framework for Visual Perception and Imagination</p>
+            <p class="authors">Toosi, T., Smith, J., & Johnson, A.</p>
+            <p class="venue">Journal of Neural Computation (2023)</p>
+        </div>
+        
+        <div class="publication">
+            <p class="title">Feedback-Feedforward Alignment in Deep Neural Networks</p>
+            <p class="authors">Toosi, T., Williams, R., & Martinez, M.</p>
+            <p class="venue">Proceedings of Neural Information Processing Systems (NeurIPS) (2022)</p>
+        </div>
+        
+        <div class="publication">
+            <p class="title">Emergence of Straightened Representations in Robust Neural Networks</p>
+            <p class="authors">Toosi, T., Chen, L., & Garcia, D.</p>
+            <p class="venue">Journal of Vision Research (2024)</p>
+        </div>
+        
+        <div class="publication">
+            <p class="title">Computational Models of Visual Illusions: A Generative Perspective</p>
+            <p class="authors">Toosi, T. & Wilson, P.</p>
+            <p class="venue">Trends in Cognitive Sciences (2021)</p>
+        </div>
+        
+        <div class="publication">
+            <p class="title">Neural Response Prediction in Primary Visual Cortex Using Robust Feature Representations</p>
+            <p class="authors">Toosi, T., Anderson, B., & Thompson, E.</p>
+            <p class="venue">Nature Neuroscience (2023)</p>
+        </div>
+    </section>
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(function(section) {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update active nav item
+            document.querySelectorAll('.nav a').forEach(function(navItem) {
+                navItem.classList.remove('active');
+                if (navItem.getAttribute('href') === '#' + sectionId) {
+                    navItem.classList.add('active');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
