@@ -11,6 +11,7 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            color: #333;
         }
         header {
             display: flex;
@@ -21,12 +22,14 @@
             width: 200px;
             border-radius: 50%;
             margin-right: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .header-content {
             flex: 1;
         }
         h1 {
             margin-bottom: 10px;
+            color: #1a73e8;
         }
         .cv-link {
             display: inline-block;
@@ -36,12 +39,24 @@
             color: white;
             text-decoration: none;
             border-radius: 4px;
+            transition: background-color 0.3s;
         }
         .cv-link:hover {
             background-color: #3367d6;
         }
         .projects {
             margin-top: 40px;
+        }
+        .project {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .project h3 {
+            color: #1a73e8;
+            margin-top: 0;
         }
     </style>
 </head>
@@ -51,8 +66,8 @@
         <div class="header-content">
             <h1>Tahereh Toosi</h1>
             <p>
-                Welcome to my academic website! I am a researcher with expertise in [Your Field]. 
-                My research interests include [Your Research Interests].
+                Welcome to my academic website! I am a researcher with expertise in computational neuroscience. 
+                My research interests include visual perception, neural networks, and generative models.
             </p>
             <a href="assets/Tahereh_CV_2025_norefs.pdf" class="cv-link" target="_blank">View CV</a>
         </div>
@@ -61,18 +76,18 @@
     <section class="projects">
         <h2>Selected Projects</h2>
         <div class="project">
-            <h3>Project 1</h3>
-            <p>Description of your first project. What was it about? What technologies or methods did you use? What were the results?</p>
+            <h3>Generative Inference: A Neural Framework for Perceptual Completion and Imagination</h3>
+            <p>This project proposes a biologically inspired computational model in which cortical feedback performs a dual function: refining neural activations during learning and dynamically generating percepts during inference. The framework posits that feedback pathways, beyond correcting errors, guide neural activity toward statistically likely interpretations based on prior experience. This dual functionality explains classical visual illusions such as Kanizsa figures and the Rubin face-vase effect, as well as Gestalt phenomena of perceptual organization. Moreover, the model extends to scenarios where sensory input is minimal or absent, offering a computational basis for imagination and hallucination. By bridging the gap between artificial neural networks and biological vision, Generative Inference paves the way for new insights into both human perception and adaptive machine learning strategies.</p>
         </div>
         
         <div class="project">
-            <h3>Project 2</h3>
-            <p>Description of your second project. What was it about? What technologies or methods did you use? What were the results?</p>
+            <h3>Feedback Feedforward Alignment</h3>
+            <p>In this project, we explore the alignment between feedback and feedforward pathways in neural networks, investigating how this alignment contributes to efficient learning and robust perception. Our findings suggest that when these pathways are properly coordinated, networks demonstrate enhanced performance, faster convergence, and greater resilience to noisy inputs.</p>
         </div>
         
         <div class="project">
-            <h3>Project 3</h3>
-            <p>Description of your third project. What was it about? What technologies or methods did you use? What were the results?</p>
+            <h3>Emergence of Straightened Representations in Robust Neural Networks</h3>
+            <p>In this project, we explore how robust training techniques foster the emergence of straightened feature representations in feedforward neural networks when processing natural movie sequences. By leveraging adversarial robustness and random smoothing, our models exhibit a notable decrease in curvature within their latent spaces—allowing for linear interpolation of temporal frames and reliable frame reconstruction. These straightened representations align with perceptual phenomena observed in human vision and demonstrate improved predictivity of neural activity in primary visual cortex (V1). Our results suggest that noise robustness can serve as a parsimonious and biologically plausible mechanism for generating temporal predictability in visual representations.</p>
         </div>
     </section>
 </body>
