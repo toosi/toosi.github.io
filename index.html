@@ -108,6 +108,24 @@
         .section.active {
             display: block;
         }
+        .social-icons {
+            display: flex;
+            margin-top: 15px;
+            gap: 15px;
+        }
+        .social-icon {
+            width: 24px;
+            height: 24px;
+        }
+        .social-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: #4285f4;
+            transition: fill 0.3s;
+        }
+        .social-icon:hover svg {
+            fill: #3367d6;
+        }
     </style>
 </head>
 <body>
@@ -116,8 +134,22 @@
         <div class="header-content">
             <h1>Tahereh Toosi</h1>
             <p>
-                I am an Associate Research Scientist at Columbia University's Center for Theoretical Neuroscience in New York. My research investigates the neural computations that drive perception by combining experimental techniques with methods from artificial intelligence and neuroscience. I merge theoretical insights with practical AI developments to enhance our understanding of both biological and machine vision systems.
+                Associate Research Scientist at Center for Theoretical Neuroscience @cu_neurotheory @ZuckermanBrain @Columbia. K99-R00 scholar @NIH @NatEyeInstitute. My research investigates the neural computations that drive perception by combining experimental techniques with methods from artificial intelligence and neuroscience. I merge theoretical insights with practical AI developments to enhance our understanding of both biological and machine vision systems.
             </p>
+            <div class="social-icons">
+                <a href="https://twitter.com/taherehtoosi" target="_blank" class="social-icon" title="Twitter">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                </a>
+                <a href="https://bsky.app/profile/taherehtoosi.bsky.social" target="_blank" class="social-icon" title="Bluesky">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.3723 0 0 5.3723 0 12s5.3723 12 12 12 12-5.3723 12-12S18.6277 0 12 0zm3.7416 16.0004c-.113.0748-.3107.1687-.6107.2527-1.0766.284-2.3818.4366-3.1309.4366-.749 0-2.0542-.1526-3.1308-.4379-.3001-.0827-.4978-.1766-.6108-.2527a.1466.1466 0 0 1-.0628-.12v-2.3543a.1401.1401 0 0 1 .086-.131c.344-.1508.6587-.3297.9668-.5326-.1868-.125-.3616-.24-.527-.3466-1.3054-1.0752-1.9804-2.6215-1.9804-3.3946 0-.9401.6337-2.1857 1.5664-3.041C9.2111 5.327 10.3607 4.8312 12 4.8312c1.6393 0 2.7889.4958 3.6914 1.3477.9327.8553 1.5664 2.1009 1.5664 3.041 0 .7731-.675 2.3194-1.9804 3.3946-.1654.1066-.3402.2216-.527.3466.3055.203.6228.3819.9668.5326.052.02.086.0734.086.131v2.3542c0 .048-.0229.0934-.0628.12z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/tahereh-toosi-45b99014/" target="_blank" class="social-icon" title="LinkedIn">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="mailto:tahereh.toosi@columbia.edu" class="social-icon" title="Email">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                </a>
+            </div>
             <a href="assets/Tahereh_CV_2025_norefs.pdf" class="cv-link" target="_blank">View CV</a>
         </div>
     </header>
