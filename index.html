@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tahereh Toosi - Academic Website</title>
     <style>
+        :root {
+            --name-color: #ff6781;         /* Salmon pink */
+            --section-title-color: #80cbc4; /* Teal */
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Open Sans', Verdana, sans-serif;
             line-height: 1.6;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            color: #ffffff;
-            background-color: #000000;
+            color: #e0e0e0;
+            background-color: #1e1e1e;
         }
         header {
             display: flex;
@@ -23,31 +27,63 @@
             width: 200px;
             border-radius: 50%;
             margin-right: 30px;
-            box-shadow: 0 4px 8px rgba(255,255,255,0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         .header-content {
             flex: 1;
         }
+        h1, h2, h3 {
+            font-family: 'Montserrat', Arial, sans-serif;
+            color: #66ccff;
+        }
         h1 {
             margin-bottom: 10px;
-            color: #4285f4;
+            color: var(--name-color);
         }
         .projects {
             margin-top: 40px;
+        }
+        .projects h2 {
+            color: var(--section-title-color);
         }
         .project {
             margin-bottom: 30px;
             padding: 20px;
             border-radius: 8px;
-            background-color: #1a1a1a;
-            box-shadow: 0 2px 4px rgba(255,255,255,0.05);
+            background-color: #2a2a2a;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .project h3 {
-            color: #4285f4;
             margin-top: 0;
         }
+        .project h4 {
+            color: #b0b0b0;
+            font-family: 'Open Sans', Verdana, sans-serif;
+            font-size: 1.1em;
+            margin: 10px 0;
+            font-style: italic;
+        }
+        .project .tags {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0 0 0;
+        }
+        .project .tag {
+            color: #ffffff;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            font-family: 'Open Sans', Verdana, sans-serif;
+            font-weight: 500;
+        }
+        .project .tag.neuroscience {
+            background-color: #4a148c; /* Deep purple */
+        }
+        .project .tag.ai {
+            background-color: #006064; /* Dark cyan */
+        }
         .project a {
-            color: #4285f4;
+            color: var(--section-title-color);
             text-decoration: none;
         }
         .project a:hover {
@@ -58,7 +94,7 @@
         }
         .publication {
             margin-bottom: 20px;
-            border-left: 3px solid #4285f4;
+            border-left: 3px solid var(--section-title-color);
             padding-left: 15px;
         }
         .publication p {
@@ -71,14 +107,10 @@
             font-style: italic;
         }
         .publication .venue {
-            color: #999;
+            color: #b0b0b0;
         }
-        .publications h3 {
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: #4285f4;
-            border-bottom: 1px solid #333;
-            padding-bottom: 5px;
+        .publications h2 {
+            color: var(--section-title-color);
         }
         .nav {
             display: flex;
@@ -88,8 +120,8 @@
         }
         .nav a {
             padding: 10px 20px;
-            background-color: #1a1a1a;
-            color: #4285f4;
+            background-color: #2a2a2a;
+            color: var(--section-title-color);
             text-decoration: none;
             border-radius: 4px;
             transition: background-color 0.3s;
@@ -115,11 +147,11 @@
         .social-icon svg {
             width: 100%;
             height: 100%;
-            fill: #4285f4;
+            fill: var(--section-title-color);
             transition: fill 0.3s;
         }
         .social-icon:hover svg {
-            fill: #5c9eff;
+            fill: #99ddff;
         }
     </style>
 </head>
@@ -129,9 +161,12 @@
         <div class="header-content">
             <h1>Tahereh Toosi</h1>
             <p>
-                Associate Research Scientist at Center for Theoretical Neuroscience, Columbia University. My research investigates the neural computations that drive perception by combining experimental techniques with methods from artificial intelligence and neuroscience. I merge theoretical insights with practical AI developments to enhance our understanding of both biological and machine vision systems, supported by NIH K99-R00.
+                Associate Research Scientist at Center for Theoretical Neuroscience, Columbia University. My research investigates the neural computations that drive perception by combining experimental techniques with methods from artificial intelligence and neuroscience. I merge theoretical insights with practical AI developments to enhance our understanding of both biological and machine vision systems, supported by <a href="https://reporter.nih.gov/project-details/1K99EY035357-01" target="_blank">NIH K99/R00</a>.
             </p>
             <div class="social-icons">
+                <a href="https://github.com/toosi" target="_blank" class="social-icon" title="GitHub">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                </a>
                 <a href="https://twitter.com/taherehtoosi" target="_blank" class="social-icon" title="Twitter">
                     <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
                 </a>
@@ -152,25 +187,59 @@
     </header>
 
     <nav class="nav">
-        <a href="#projects" class="active" onclick="showSection('projects')">Projects</a>
+        <a href="#projects" class="active" onclick="showSection('projects')">Research Lines</a>
         <a href="#publications" onclick="showSection('publications')">Publications</a>
+        <a href="#talks" onclick="showSection('talks')">Talks</a>
     </nav>
 
     <section id="projects" class="projects section active">
         <h2>Research Lines</h2>
         <div class="project">
-            <h3><a href="research/generative-inference.html">Generative Inference: A Neural Framework for Perceptual Completion and Imagination</a></h3>
+            <h3><a href="research/generative-inference.html">Neural basis of perception beyond physical stimulation</a></h3>
+            <h4>Understanding how the brain completes missing information and generates mental images</h4>
             <p>This project proposes a biologically inspired computational model in which cortical feedback performs a dual function: refining neural activations during learning and dynamically generating percepts during inference. The framework posits that feedback pathways, beyond correcting errors, guide neural activity toward statistically likely interpretations based on prior experience. This dual functionality explains classical visual illusions such as Kanizsa figures and the Rubin face-vase effect, as well as Gestalt phenomena of perceptual organization. Moreover, the model extends to scenarios where sensory input is minimal or absent, offering a computational basis for imagination and hallucination. By bridging the gap between artificial neural networks and biological vision, Generative Inference paves the way for new insights into both human perception and adaptive machine learning strategies.</p>
+            <div class="tags">
+                <span class="tag neuroscience">Neuroscience</span>
+                <span class="tag ai">AI</span>
+            </div>
+        </div>
+
+        <div class="project">
+            <h3><a href="research/regulatory-mechanisms.html">Computational and theoretical understanding of regulatory mechanisms shaping natural vision</a></h3>
+            <h4>Investigating how biological constraints shape visual processing and development</h4>
+            <p>How does our visual system make sense of complex retinal input? While machine vision excels at tasks like object classification, it lacks biological insight. Conversely, classical visual models offer biological fidelity but limited scope. This project bridges this gap by studying how regulatory mechanisms in natural vision shape computational processing. We focus on regularization—constraints that optimize the input-output mapping, like energy efficiency in biology or noise robustness in AI. Our hypothesis is that these regulatory mechanisms play fundamental computational roles beyond mere maintenance. Through computational modeling, theoretical analysis, and experimental validation, we investigate how cellular-level regulatory processes influence visual cortex development and function. A key focus is understanding how retinal spontaneous activity and other regulatory mechanisms contribute to natural vision, with implications for both basic science and retinal prosthetics.</p>
+            <div class="tags">
+                <span class="tag neuroscience">Neuroscience</span>
+            </div>
         </div>
         
         <div class="project">
-            <h3><a href="research/feedback-feedforward.html">Feedback Feedforward Alignment</a></h3>
+            <h3><a href="research/feedback-feedforward.html">Bio-plausible learning algorithms</a></h3>
+            <h4>Developing learning algorithms that are biologically plausible and computationally efficient</h4>
             <p>In this project, we explore the alignment between feedback and feedforward pathways in neural networks, investigating how this alignment contributes to efficient learning and robust perception. Our findings suggest that when these pathways are properly coordinated, networks demonstrate enhanced performance, faster convergence, and greater resilience to noisy inputs.</p>
+            <div class="tags">
+                <span class="tag neuroscience">Neuroscience</span>
+                <span class="tag ai">AI</span>
+            </div>
         </div>
         
         <div class="project">
-            <h3><a href="research/straightened-representations.html">Emergence of Straightened Representations in Robust Neural Networks</a></h3>
+            <h3><a href="research/straightened-representations.html">Emergence of temporally predictive representations in robust neural networks</a></h3>
+            <h4>Exploring how robust training leads to more predictable and interpretable neural representations</h4>
             <p>In this project, we explore how robust training techniques foster the emergence of straightened feature representations in feedforward neural networks when processing natural movie sequences. By leveraging adversarial robustness and random smoothing, our models exhibit a notable decrease in curvature within their latent spaces—allowing for linear interpolation of temporal frames and reliable frame reconstruction. These straightened representations align with perceptual phenomena observed in human vision and demonstrate improved predictivity of neural activity in primary visual cortex (V1). Our results suggest that noise robustness can serve as a parsimonious and biologically plausible mechanism for generating temporal predictability in visual representations.</p>
+            <div class="tags">
+                <span class="tag neuroscience">Neuroscience</span>
+                <span class="tag ai">AI</span>
+            </div>
+        </div>
+
+        <div class="project">
+            <h3><a href="research/temporal-attention.html">Experiments on Humans and non-human primates: Temporal Attention and object recognition abilities</a></h3>
+            <h4>Understanding how the brain uses temporal patterns to anticipate and shape perception</h4>
+            <p>In this work, I investigate how the human brain extracts sub-second temporal patterns from repeated or structured contexts to anticipate upcoming stimuli. Combining EEG, psychophysical tasks, and continuous flash suppression paradigms, I examine how alpha oscillations and cortical excitability are shaped by learned temporal associations. These experiments reveal how predictive signals can enhance or suppress conscious perception, offering new insights into the fundamental role of time-based cues in shaping attention and perceptual thresholds.</p>
+            <div class="tags">
+                <span class="tag neuroscience">Neuroscience</span>
+            </div>
         </div>
     </section>
     
@@ -257,6 +326,65 @@
             <p class="title">Perceptually-aligned gradients by sampling the implicit prior</p>
             <p class="authors">Toosi, T.</p>
             <p class="venue">Conference on the Mathematical Theory of Deep Neural Networks (DeepMath) (2022)</p>
+        </div>
+    </section>
+
+    <section id="talks" class="talks section">
+        <h2>Invited Talks</h2>
+        
+        <div class="publication">
+            <p class="title">Generative inference in object recognition models—A unifying framework for discriminative and generative computations in vision</p>
+            <p class="venue">TigerBrain Research Symposium, Princeton University (2024)</p>
+        </div>
+
+        <div class="publication">
+            <p class="title">Generative inference in object recognition models—A unifying framework for discriminative and generative computations in vision</p>
+            <p class="venue">From Neuroscience to Artificially Intelligent Systems, Cold Spring Harbor Laboratory (2024)</p>
+        </div>
+
+        <div class="publication">
+            <p class="title">Generative perceptual inference in deep neural network models of object recognition induces illusory shapes</p>
+            <p class="venue">Swartz Foundation Meeting, University of Washington (2024)</p>
+        </div>
+
+        <div class="publication">
+            <p class="title">Emergence of illusory contours in robust deep neural networks by accumulation of implicit priors</p>
+            <p class="venue">Object Recognition: Models, Vision Science Society Meeting, St. Pete Beach Florida (2024)</p>
+        </div>
+
+        <div class="publication">
+            <p class="title">Cortical computations underlying the integration of perceptual priors and sensory processing</p>
+            <p class="venue">Brain Science External Postdoc Seminar Series, Brown University (2024)</p>
+        </div>
+
+        <div class="publication">
+            <p class="title">Can images predict neural patterns better than Deep Nets?</p>
+            <p class="venue">ICBINB Workshop, Cosyne Meeting, Lisbon, Portugal (2024)</p>
+        </div>
+
+        <div class="publication">
+            <p class="title">Harnessing feedback pathways: Integrating perceptual priors in sensory processing</p>
+            <p class="venue">SYNAPSES Seminar Series, Yale University (2024)</p>
+        </div>
+
+        <div class="publication">
+            <p class="title">Uncovering the evolution of neural representations in the ventral visual stream</p>
+            <p class="venue">Neuroscience and Artificial Intelligence Laboratory (NeuroAILab), Stanford University (2023)</p>
+        </div>
+
+        <div class="publication">
+            <p class="title">Interpretable intermediate representations in primate ventral visual cortex</p>
+            <p class="venue">Visual Inference Lab, Columbia University (2023)</p>
+        </div>
+
+        <div class="publication">
+            <p class="title">Representational straightening of natural movies in robust feedforward neural networks</p>
+            <p class="venue">Visual Object and Scene Recognition Nanosymposium, Society for Neuroscience Meeting, San Diego (2022)</p>
+        </div>
+
+        <div class="publication">
+            <p class="title">Symbiotic learning of feedforward and feedback networks</p>
+            <p class="venue">From Neuroscience to Artificially Intelligent Systems (NAISys), Cold Spring Harbor Laboratory (2020)</p>
         </div>
     </section>
     <script>
