@@ -1,0 +1,5 @@
+# Ignore all hide folders and their contents
+**/hide/
+**/hide/**
+# Ignore macOS system files
+.DS_Store 

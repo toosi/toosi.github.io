@@ -5,40 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Straightened Representations - Tahereh Toosi</title>
     <style>
+        :root {
+            --name-color: #ff6781;         /* Salmon pink */
+            --section-title-color: #80cbc4; /* Teal */
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Open Sans', Verdana, sans-serif;
             line-height: 1.6;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            color: #ffffff;
-            background-color: #000000;
+            color: #e0e0e0;
+            background-color: #1e1e1e;
         }
         .back-link {
             display: inline-block;
             margin-bottom: 20px;
-            color: #4285f4;
+            color: #66ccff;
             text-decoration: none;
         }
         .back-link:hover {
             text-decoration: underline;
         }
+        h1, h2, h3 {
+            font-family: 'Montserrat', Arial, sans-serif;
+            color: var(--section-title-color);
+        }
         h1 {
-            color: #4285f4;
+            color: var(--name-color);
             margin-bottom: 20px;
         }
         .content {
-            background-color: #1a1a1a;
+            background-color: #2a2a2a;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(255,255,255,0.05);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .publications {
             margin-top: 30px;
         }
         .publication {
             margin-bottom: 20px;
-            border-left: 3px solid #4285f4;
+            border-left: 3px solid #66ccff;
             padding-left: 15px;
         }
         .publication p {
@@ -51,7 +59,7 @@
             font-style: italic;
         }
         .publication .venue {
-            color: #999;
+            color: #b0b0b0;
         }
     </style>
 </head>
@@ -80,6 +88,14 @@
                 <p class="venue">International Conference on Learning Representations (ICLR) (2023)</p>
             </div>
         </div>
+
+        <!-- <h2>Poster</h2>
+        <div class="publications">
+            <div class="publication">
+                <p class="title">Brain-like temporal straightening of natural movies in robust feedforward neural networks</p>
+                <p class="venue">Department of Electrical Engineering, Stanford University (2023)</p>
+            </div>
+        </div> -->
     </div>
 </body>
 </html> 

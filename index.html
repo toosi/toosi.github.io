@@ -69,7 +69,6 @@
             margin: 15px 0 0 0;
         }
         .project .tag {
-            color: #ffffff;
             padding: 3px 6px;
             border-radius: 4px;
             font-size: 0.7em;
@@ -77,17 +76,30 @@
             font-weight: 500;
         }
         .project .tag.neuroscience {
-            background-color: #4a148c; /* Deep purple */
+            background-color: #10b981; /* Emerald */
+            color: #ffffff;
         }
         .project .tag.ai {
-            background-color: #006064; /* Dark cyan */
+            background-color: #FDD7E4; /* Pale pink */
+            color: #333333;
         }
         .project a {
             color: var(--section-title-color);
-            text-decoration: none;
+            text-decoration: underline;
         }
         .project a:hover {
-            text-decoration: underline;
+            text-decoration: none;
+        }
+        .project .gif-container {
+            display: flex;
+            gap: 20px;
+            margin: 15px 0;
+        }
+        .project img {
+            width: 200px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         .publications {
             margin-top: 40px;
@@ -153,6 +165,10 @@
         .social-icon:hover svg {
             fill: #99ddff;
         }
+        .publication .title a {
+            color: #fff;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -161,7 +177,7 @@
         <div class="header-content">
             <h1>Tahereh Toosi</h1>
             <p>
-                Associate Research Scientist at Center for Theoretical Neuroscience, Columbia University. My research investigates the neural computations that drive perception by combining experimental techniques with methods from artificial intelligence and neuroscience. I merge theoretical insights with practical AI developments to enhance our understanding of both biological and machine vision systems, supported by <a href="https://reporter.nih.gov/project-details/1K99EY035357-01" target="_blank">NIH K99/R00</a>.
+                Associate Research Scientist at the <a href="https://ctn.zuckermaninstitute.columbia.edu/about" target="_blank" style="color: #10b981;">Center for Theoretical Neuroscience</a>, Columbia University. My research bridges computational neuroscience and AI, focusing on building intrinsically aligned models of visual perception. Supported by an <a href="https://reporter.nih.gov/project-details/1K99EY035357-01" target="_blank" style="color: #10b981;">NIH K99/R00</a> award, my research leverages AI tools and biological constraints to understand core intelligence.
             </p>
             <div class="social-icons">
                 <a href="https://github.com/toosi" target="_blank" class="social-icon" title="GitHub">
@@ -176,12 +192,12 @@
                 <a href="https://www.linkedin.com/in/tahereh-toosi-45b99014/" target="_blank" class="social-icon" title="LinkedIn">
                     <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 </a>
-                <a href="mailto:tahereh.toosi@columbia.edu" class="social-icon" title="Email">
+                <!-- <a href="mailto:tahereh.toosi@columbia.edu" class="social-icon" title="Email">
                     <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
-                </a>
-                <a href="assets/Tahereh_CV_2025_norefs.pdf" target="_blank" class="social-icon" title="CV">
+                </a> -->
+                <!-- <a href="assets/Tahereh_CV_2025_norefs.pdf" target="_blank" class="social-icon" title="CV">
                     <img src="assets/icons/CV.png" alt="CV" style="width: 24px; height: 24px;">
-                </a>
+                </a> -->
             </div>
         </div>
     </header>
@@ -197,7 +213,10 @@
         <div class="project">
             <h3><a href="research/generative-inference.html">Neural basis of perception beyond physical stimulation</a></h3>
             <h4>Understanding how the brain completes missing information and generates mental images</h4>
-            <p>This project proposes a biologically inspired computational model in which cortical feedback performs a dual function: refining neural activations during learning and dynamically generating percepts during inference. The framework posits that feedback pathways, beyond correcting errors, guide neural activity toward statistically likely interpretations based on prior experience. This dual functionality explains classical visual illusions such as Kanizsa figures and the Rubin face-vase effect, as well as Gestalt phenomena of perceptual organization. Moreover, the model extends to scenarios where sensory input is minimal or absent, offering a computational basis for imagination and hallucination. By bridging the gap between artificial neural networks and biological vision, Generative Inference paves the way for new insights into both human perception and adaptive machine learning strategies.</p>
+            <div class="gif-container">
+                <img src="assets/gifs/FaceVase_advrobust_L2_eps_0.50_100_vggface2_all_lossCE_noise0.02_eps4_lrinf3_itr100_transformation_movie.gif" alt="Face-Vase Illusion Transformation 1">
+                <img src="assets/gifs/FaceVase_advrobust_L2_eps_5.00_100_imagenet_all_lossCE_noise0.02_eps40_lrinf5_itr400_transformation_movie.gif" alt="Face-Vase Illusion Transformation 2">
+            </div>
             <div class="tags">
                 <span class="tag neuroscience">Neuroscience</span>
                 <span class="tag ai">AI</span>
@@ -207,7 +226,6 @@
         <div class="project">
             <h3><a href="research/regulatory-mechanisms.html">Computational and theoretical understanding of regulatory mechanisms shaping natural vision</a></h3>
             <h4>Investigating how biological constraints shape visual processing and development</h4>
-            <p>How does our visual system make sense of complex retinal input? While machine vision excels at tasks like object classification, it lacks biological insight. Conversely, classical visual models offer biological fidelity but limited scope. This project bridges this gap by studying how regulatory mechanisms in natural vision shape computational processing. We focus on regularization—constraints that optimize the input-output mapping, like energy efficiency in biology or noise robustness in AI. Our hypothesis is that these regulatory mechanisms play fundamental computational roles beyond mere maintenance. Through computational modeling, theoretical analysis, and experimental validation, we investigate how cellular-level regulatory processes influence visual cortex development and function. A key focus is understanding how retinal spontaneous activity and other regulatory mechanisms contribute to natural vision, with implications for both basic science and retinal prosthetics.</p>
             <div class="tags">
                 <span class="tag neuroscience">Neuroscience</span>
             </div>
@@ -215,8 +233,9 @@
         
         <div class="project">
             <h3><a href="research/feedback-feedforward.html">Bio-plausible learning algorithms</a></h3>
-            <h4>Developing learning algorithms that are biologically plausible and computationally efficient</h4>
-            <p>In this project, we explore the alignment between feedback and feedforward pathways in neural networks, investigating how this alignment contributes to efficient learning and robust perception. Our findings suggest that when these pathways are properly coordinated, networks demonstrate enhanced performance, faster convergence, and greater resilience to noisy inputs.</p>
+            <h4>Realisitc alternatives to backpropagation of errors</h4>
+            
+            <img src="assets/gifs/tweets_FFA.gif" alt="Feedback-Feedforward Alignment GIF" style="width:100%;max-width:600px;height:auto;margin:10px 0;" />
             <div class="tags">
                 <span class="tag neuroscience">Neuroscience</span>
                 <span class="tag ai">AI</span>
@@ -225,8 +244,19 @@
         
         <div class="project">
             <h3><a href="research/straightened-representations.html">Emergence of temporally predictive representations in robust neural networks</a></h3>
-            <h4>Exploring how robust training leads to more predictable and interpretable neural representations</h4>
-            <p>In this project, we explore how robust training techniques foster the emergence of straightened feature representations in feedforward neural networks when processing natural movie sequences. By leveraging adversarial robustness and random smoothing, our models exhibit a notable decrease in curvature within their latent spaces—allowing for linear interpolation of temporal frames and reliable frame reconstruction. These straightened representations align with perceptual phenomena observed in human vision and demonstrate improved predictivity of neural activity in primary visual cortex (V1). Our results suggest that noise robustness can serve as a parsimonious and biologically plausible mechanism for generating temporal predictability in visual representations.</p>
+            <h4>Robustness to input noise leads to emergent temporal predictability in neural representations</h4>
+            <!-- <p>In this project, we explore how robust training techniques foster the emergence of straightened feature representations in feedforward neural networks when processing natural movie sequences. By leveraging adversarial robustness and random smoothing, our models exhibit a notable decrease in curvature within their latent spaces—allowing for linear interpolation of temporal frames and reliable frame reconstruction. These straightened representations align with perceptual phenomena observed in human vision and demonstrate improved predictivity of neural activity in primary visual cortex (V1). Our results suggest that noise robustness can serve as a parsimonious and biologically plausible mechanism for generating temporal predictability in visual representations.</p> -->
+            <img src="assets/gifs/temporal.png" alt="Temporal Representations Preview" style="width:100%;max-width:800px;display:block;margin:20px auto 0 auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.3);" />
+            <div class="tags">
+                <span class="tag neuroscience">Neuroscience</span>
+                <span class="tag ai">AI</span>
+            </div>
+        </div>
+
+        <div class="project">
+            <h3><a href="research/interpretable-features.html">Interpretable features to identify neural representations</a></h3>
+            <h4>Making neural representations (natural or artificial) interpretable using meta-space analysis</h4>
+            <img src="assets/gifs/MSA_preview.png" alt="MSA interpretable features preview" style="width:100%;max-width:800px;display:block;margin:20px auto 0 auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.3);" />
             <div class="tags">
                 <span class="tag neuroscience">Neuroscience</span>
                 <span class="tag ai">AI</span>
@@ -236,7 +266,8 @@
         <div class="project">
             <h3><a href="research/temporal-attention.html">Experiments on Humans and non-human primates: Temporal Attention and object recognition abilities</a></h3>
             <h4>Understanding how the brain uses temporal patterns to anticipate and shape perception</h4>
-            <p>In this work, I investigate how the human brain extracts sub-second temporal patterns from repeated or structured contexts to anticipate upcoming stimuli. Combining EEG, psychophysical tasks, and continuous flash suppression paradigms, I examine how alpha oscillations and cortical excitability are shaped by learned temporal associations. These experiments reveal how predictive signals can enhance or suppress conscious perception, offering new insights into the fundamental role of time-based cues in shaping attention and perceptual thresholds.</p>
+            <!-- <p>In this work, I investigate how the human brain extracts sub-second temporal patterns from repeated or structured contexts to anticipate upcoming stimuli. Combining EEG, psychophysical tasks, and continuous flash suppression paradigms, I examine how alpha oscillations and cortical excitability are shaped by learned temporal associations. These experiments reveal how predictive signals can enhance or suppress conscious perception, offering new insights into the fundamental role of time-based cues in shaping attention and perceptual thresholds.</p> -->
+            <img src="assets/gifs/JNP2017.jpeg" alt="Temporal Attention EEG Results" style="width:100%;max-width:400px;display:block;margin:20px auto 0 auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.3);" />
             <div class="tags">
                 <span class="tag neuroscience">Neuroscience</span>
             </div>
@@ -255,13 +286,13 @@
         </div>
         
         <div class="publication">
-            <p class="title">Brain-like flexible visual inference by harnessing feedback-feedforward alignment</p>
+            <p class="title"><a href="https://papers.nips.cc/paper_files/paper/2023/file/b29ec434e049fb96f3c4245a405ee976-Supplemental-Conference.pdf" target="_blank" style="color:#fff;text-decoration:underline;">Brain-like flexible visual inference by harnessing feedback-feedforward alignment</a></p>
             <p class="authors">Toosi, T., & Issa, E. B.</p>
             <p class="venue">Advances in Neural Information Processing Systems (NeurIPS) (2023)</p>
         </div>
         
         <div class="publication">
-            <p class="title">Brain-like temporal straightening of natural movies in robust feedforward neural networks</p>
+            <p class="title"><a href="https://arxiv.org/abs/2308.13870" target="_blank" style="color:#fff;text-decoration:underline;">Brain-like representational straightening of natural movies in robust feedforward neural networks</a></p>
             <p class="authors">Toosi, T., & Issa, E. B.</p>
             <p class="venue">International Conference on Learning Representations (ICLR) (2023)</p>
         </div>
@@ -384,7 +415,7 @@
 
         <div class="publication">
             <p class="title">Symbiotic learning of feedforward and feedback networks</p>
-            <p class="venue">From Neuroscience to Artificially Intelligent Systems (NAISys), Cold Spring Harbor Laboratory (2020)</p>
+            <p class="venue">From Neuroscience to Artificially Intelligent Systems, Cold Spring Harbor Laboratory, 2020</p>
         </div>
     </section>
     <script>

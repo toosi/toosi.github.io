@@ -5,40 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generative Inference - Tahereh Toosi</title>
     <style>
+        :root {
+            --name-color: #ff6781;         /* Salmon pink */
+            --section-title-color: #80cbc4; /* Teal */
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Open Sans', Verdana, sans-serif;
             line-height: 1.6;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            color: #ffffff;
-            background-color: #000000;
+            color: #e0e0e0;
+            background-color: #1e1e1e;
         }
         .back-link {
             display: inline-block;
             margin-bottom: 20px;
-            color: #4285f4;
+            color: #66ccff;
             text-decoration: none;
         }
         .back-link:hover {
             text-decoration: underline;
         }
+        h1, h2, h3 {
+            font-family: 'Montserrat', Arial, sans-serif;
+            color: var(--section-title-color);
+        }
         h1 {
-            color: #4285f4;
+            color: var(--name-color);
             margin-bottom: 20px;
         }
         .content {
-            background-color: #1a1a1a;
+            background-color: #2a2a2a;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(255,255,255,0.05);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .publications {
             margin-top: 30px;
         }
         .publication {
             margin-bottom: 20px;
-            border-left: 3px solid #4285f4;
+            border-left: 3px solid #66ccff;
             padding-left: 15px;
         }
         .publication p {
@@ -51,7 +59,7 @@
             font-style: italic;
         }
         .publication .venue {
-            color: #999;
+            color: #b0b0b0;
         }
     </style>
 </head>
@@ -59,17 +67,11 @@
     <a href="../index.html" class="back-link">← Back to Home</a>
     
     <div class="content">
-        <h1>Generative Inference: A Neural Framework for Perceptual Completion and Imagination</h1>
+        <h1>Generative inference: a unifying principle for the integration of learned priors in natural and artificial intelligence</h1>
         
-        <p>This project proposes a biologically inspired computational model in which cortical feedback performs a dual function: refining neural activations during learning and dynamically generating percepts during inference. The framework posits that feedback pathways, beyond correcting errors, guide neural activity toward statistically likely interpretations based on prior experience.</p>
+        <p>Leveraging learned knowledge to interpret ambiguous or unusual sensory inputs is a hallmark of biological intelligence, yet artificial systems typically cannot utilize their learned priors beyond narrowly defined training experiences. I developed "Generative Inference", a computational principle that enables any artificial neural network to access and deploy its implicitly learned statistical regularities through feedback pathways. Applied to vision, we demonstrate that Generative Inference accounts for both perceptual experiences and neural signatures across a spectrum of previously disparate phenomena—from illusory contours to figure-ground segregation, brightness illusions, and even hallucination-like pattern formation—all within systems capable of rapid object recognition.</p>
 
-        <h2>Key Findings</h2>
-        <ul>
-            <li>Dual functionality of feedback pathways in learning and inference</li>
-            <li>Explanation of classical visual illusions (Kanizsa figures, Rubin face-vase effect)</li>
-            <li>Computational basis for imagination and hallucination</li>
-            <li>Bridging artificial neural networks and biological vision</li>
-        </ul>
+ 
 
         <h2>Related Publications</h2>
         <div class="publications">
@@ -91,6 +93,44 @@
                 <p class="venue">Cognitive Computational Neuroscience (CCN) (2024)</p>
             </div>
         </div>
+
+        <h2>Invited Talks</h2>
+        <div class="publications">
+            <div class="publication">
+                <p class="title">Generative inference in object recognition models—A unifying framework for discriminative and generative computations in vision</p>
+                <p class="venue">TigerBrain Research Symposium, Princeton University (2024)</p>
+            </div>
+    
+            <div class="publication">
+                <p class="title">Generative inference in object recognition models—A unifying framework for discriminative and generative computations in vision</p>
+                <p class="venue">From Neuroscience to Artificially Intelligent Systems, Cold Spring Harbor Laboratory (2024)</p>
+            </div>
+            <div class="publication">
+                <p class="title">Generative perceptual inference in deep neural network models of object recognition induces illusory shapes</p>
+                <p class="venue">Swartz Foundation Meeting, University of Washington (2024)</p>
+            </div>
+            <div class="publication">
+                <p class="title">Emergence of illusory contours in robust deep neural networks by accumulation of implicit priors</p>
+                <p class="venue">Object Recognition: Models, Vision Science Society Meeting, St. Pete Beach Florida (2024)</p>
+            </div>
+            <div class="publication">
+                <p class="title">Cortical computations underlying the integration of perceptual priors and sensory processing</p>
+                <p class="venue">Brain Science External Postdoc Seminar Series, Brown University (2024)</p>
+            </div>
+            <div class="publication">
+                <p class="title">Harnessing feedback pathways: Integrating perceptual priors in sensory processing</p>
+                <p class="venue">SYNAPSES Seminar Series, Yale University (2024)</p>
+            </div>
+        </div>
+
+
+        <section id="public-demos" class="public-demos section">
+            <h2>Public Demos</h2>
+            <div class="project">
+                <img src="../assets/gifs/Demo_night.png" alt="Demo Night - Dementia Self-Perception" style="width:100%;max-width:500px;display:block;margin:20px auto 0 auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.3);" />
+                <p style="text-align:center;margin-top:10px;font-style:italic;">"How do I see myself if I develop dementia?"<br>Presented at Vision Science Society, Demo night, 2024</p>
+            </div>
+        </section>
     </div>
 </body>
 </html> 
