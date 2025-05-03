@@ -175,7 +175,7 @@
     <header>
         <img src="assets/profile_400x400-.png" alt="Tahereh Toosi" class="profile-img">
         <div class="header-content">
-            <h1>Tahereh Toosi</h1>
+            <h1>Tahereh Toosi, PhD</h1>
             <p>
                 Associate Research Scientist at the <a href="https://ctn.zuckermaninstitute.columbia.edu/about" target="_blank" style="color: #10b981;">Center for Theoretical Neuroscience</a>, Columbia University. My research bridges computational neuroscience and AI, focusing on building intrinsically aligned models of visual perception. Supported by an <a href="https://reporter.nih.gov/project-details/1K99EY035357-01" target="_blank" style="color: #10b981;">NIH K99/R00</a> award, my research leverages AI tools and biological constraints to understand core intelligence.
             </p>
@@ -436,6 +436,44 @@
                 }
             });
         }
+
+        // Visitor counter for all visitors
+        async function updateCounter() {
+            try {
+                // Get current count
+                const getResponse = await fetch('https://api.countapi.xyz/get/toosi.github.io/visits');
+                const getData = await getResponse.json();
+                
+                // Update count
+                const updateResponse = await fetch('https://api.countapi.xyz/hit/toosi.github.io/visits');
+                const updateData = await updateResponse.json();
+                
+                // Create or update counter display
+                let counterDisplay = document.getElementById('visitor-counter');
+                if (!counterDisplay) {
+                    counterDisplay = document.createElement('div');
+                    counterDisplay.id = 'visitor-counter';
+                    counterDisplay.style.position = 'fixed';
+                    counterDisplay.style.bottom = '20px';
+                    counterDisplay.style.right = '20px';
+                    counterDisplay.style.backgroundColor = 'rgba(0,0,0,0.8)';
+                    counterDisplay.style.color = '#80cbc4';
+                    counterDisplay.style.padding = '8px 15px';
+                    counterDisplay.style.borderRadius = '8px';
+                    counterDisplay.style.fontSize = '14px';
+                    counterDisplay.style.zIndex = '1000';
+                    counterDisplay.style.fontFamily = "'Open Sans', Verdana, sans-serif";
+                    counterDisplay.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
+                    document.body.appendChild(counterDisplay);
+                }
+                counterDisplay.textContent = `Total Visits: ${updateData.value}`;
+            } catch (error) {
+                console.log('Counter error:', error);
+            }
+        }
+
+        // Initialize counter when the page loads
+        document.addEventListener('DOMContentLoaded', updateCounter);
     </script>
 </body>
 </html>
