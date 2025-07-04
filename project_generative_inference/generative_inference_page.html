@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative Inference: A Unifying Principle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 48px;
+            margin-bottom: 32px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .title {
+            font-size: 2.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1a202c;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: #64748b;
+            margin-bottom: 24px;
+            font-weight: 400;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .emphasis-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 12px;
+            margin: 24px auto;
+            max-width: 900px;
+            font-size: 1.1em;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-align: left;
+        }
+
+        .emphasis-box strong {
+            font-weight: 600;
+        }
+
+        .authors {
+            font-size: 1rem;
+            color: #475569;
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #2563eb;
+            border: 1px solid #e2e8f0;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+        }
+
+        .spectrum-section {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 48px;
+            margin-bottom: 32px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .spectrum-title {
+            font-size: 1.875rem;
+            margin-bottom: 16px;
+            text-align: center;
+            color: #1a202c;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+        }
+
+        .key-insight {
+            background: #fff3cd;
+            border: 2px solid #ffeaa7;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px auto;
+            max-width: 900px;
+            font-size: 1.1em;
+            color: #856404;
+        }
+
+        .network-info {
+            background: #e8f4fd;
+            border: 2px solid #3498db;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 30px auto;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .network-info h3 {
+            color: #2980b9;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin: 3px;
+            font-weight: 500;
+        }
+
+        .stats-box {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .spectrum-container {
+            position: relative;
+            margin: 40px 0;
+        }
+
+        .spectrum-bar {
+            height: 64px;
+            background: linear-gradient(to right, 
+                #10b981 0%, 
+                #f59e0b 50%, 
+                #ef4444 100%);
+            border-radius: 32px;
+            position: relative;
+            margin: 32px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .spectrum-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+            font-weight: 500;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .phenomena-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .phenomenon-card {
+            background: white;
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        
+        .phenomenon-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-sensory { 
+            border-left: 8px solid #10b981 !important; 
+        }
+        .card-moderate { 
+            border-left: 8px solid #f59e0b !important; 
+        }
+        .card-prior { 
+            border-left: 8px solid #ef4444 !important; 
+        }
+
+        .phenomenon-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1a202c;
+            letter-spacing: -0.025em;
+        }
+
+        .phenomenon-description {
+            color: #64748b;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .demo-placeholder {
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-style: italic;
+            margin-bottom: 20px;
+            border: 1px dashed #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        .demo-btn {
+            width: 100%;
+            padding: 12px;
+            background: #E238EC;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .demo-btn:hover {
+            background: #c026c9;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(226, 56, 236, 0.25);
+        }
+
+        .demo-btn-conventional {
+            background: #0099cc;
+        }
+
+        .demo-btn-conventional:hover {
+            background: #0077a3;
+            box-shadow: 0 4px 12px rgba(0, 153, 204, 0.25);
+        }
+
+        .repurposing-box {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            color: #2c3e50;
+            padding: 24px;
+            border-radius: 12px;
+            margin: 30px auto;
+            max-width: 900px;
+            font-size: 1.1em;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+
+        .close:hover {
+            color: black;
+        }
+
+        .password-section {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .password-input {
+            padding: 12px 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin: 0 12px;
+            font-size: 15px;
+            width: 200px;
+            font-family: inherit;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.25rem;
+            }
+            
+            .phenomena-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .header, .spectrum-section {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1 class="title">Generative Inference</h1>
+            <p class="subtitle">A unifying principle for the integration of learned priors in natural and artificial intelligence</p>
+            
+
+            
+            <p class="authors">Tahereh Toosi, Kenneth D. Miller</p>
+            <p class="authors">Center for Theoretical Neuroscience, Columbia University</p>
+            
+            <div class="links">
+                <a href="#" class="btn btn-primary">Paper (Coming Soon)</a>
+                <a href="#" class="btn btn-secondary">Code (Coming Soon)</a>
+            </div>
+        </div>
+
+        <!-- Perceptual Spectrum Section -->
+        <div class="spectrum-section">
+            <h2 class="spectrum-title">Sample Capabilities Across the Perceptual Continuum</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 30px;">
+                Visual perception exists on a spectrum from pure sensory processing to pure prior-driven inference
+            </p>
+
+            <div class="key-insight">
+                <strong>💡 Key Insight:</strong> Neural networks trained for object recognition implicitly learn rich statistical priors about natural images. Generative Inference unlocks these hidden capabilities by repurposing the same feedback pathways used during training to guide perception during inference.
+            </div>
+
+
+            
+            <div class="spectrum-container">
+                <div class="spectrum-bar"></div>
+                <div class="spectrum-labels">
+                    <span>100% Sensory Evidence</span>
+                    <span>Sensory + Priors</span>
+                    <span>100% Prior Knowledge</span>
+                </div>
+            </div>
+
+            <!-- Phenomena Grid -->
+            <div class="phenomena-grid">
+                <div class="phenomenon-card card-sensory">
+                    <h3 class="phenomenon-title"><a href="https://www.cell.com/neuron/fulltext/S0896-6273(12)00092-X?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS089662731200092X%3Fshowall%3Dtrue" target="_blank" style="color: inherit; text-decoration: underline;">Core Object Recognition</a></h3>
+                    <p class="phenomenon-description">Fast, feedforward processing of clear, prototypical visual inputs</p>
+                    <div class="demo-placeholder" id="recognition-demo">
+                        <img src="recognition_demo.gif" alt="Core object recognition" style="max-width: 100%; height: auto; border-radius: 6px; display: none;" id="recognition-gif">
+                        <div id="recognition-placeholder" style="color: #94a3b8; font-style: italic;">Clear object classification demo</div>
+                    </div>
+                    <button class="demo-btn demo-btn-conventional" onclick="startDemo('recognition')" id="recognition-btn">Conventional Inference</button>
+                </div>
+
+                <div class="phenomenon-card card-moderate">
+                    <h3 class="phenomenon-title">Resolving noise/corruption</h3>
+                    <p class="phenomenon-description">Recognizing objects under corruption or noise</p>
+                    <div class="demo-placeholder" id="noise-demo">
+                        <img src="noise_demo.gif" alt="Noise resolution" style="max-width: 100%; height: auto; border-radius: 6px; display: none;" id="noise-gif">
+                        <div id="noise-placeholder" style="color: #94a3b8; font-style: italic;">Noisy image restoration demo</div>
+                    </div>
+                    <button class="demo-btn" onclick="startDemo('noise')" id="noise-btn">Generative Inference</button>
+                </div>
+
+                <!-- Moderate Integration -->
+                <div class="phenomenon-card card-moderate">
+                    <h3 class="phenomenon-title"><a href="https://pubmed.ncbi.nlm.nih.gov/7869121/" target="_blank" style="color: inherit; text-decoration: underline;">Figure-Ground Segregation</a></h3>
+                    <p class="phenomenon-description">Separating objects from background using contextual cues</p>
+                    <div class="demo-placeholder" id="figure_ground-demo">
+                        <img src="figure_ground_demo.gif" alt="Figure-ground segregation" style="max-width: 100%; height: auto; border-radius: 6px; display: none;" id="figure_ground-gif">
+                        <div id="figure_ground-placeholder" style="color: #94a3b8; font-style: italic;">Figure-ground separation demo</div>
+                    </div>
+                    <button class="demo-btn" onclick="startDemo('figure_ground')" id="figure_ground-btn">Generative Inference</button>
+                </div>
+
+                <!-- Prior-Driven -->
+                <div class="phenomenon-card card-moderate">
+                    <h3 class="phenomenon-title">Kanizsa Illusions</h3>
+                    <p class="phenomenon-description">Perceiving illusory contours and shapes from inducer stimuli</p>
+                    <div class="demo-placeholder" id="kanizsa-demo">
+                        <img src="kanizsa_demo.gif" alt="Kanizsa illusions" style="max-width: 100%; height: auto; border-radius: 6px; display: none;" id="kanizsa-gif">
+                        <div id="kanizsa-placeholder" style="color: #94a3b8; font-style: italic;">Kanizsa square</div>
+                    </div>
+                    <button class="demo-btn" onclick="startDemo('kanizsa')" id="kanizsa-btn">Generative Inference</button>
+                </div>
+
+                <div class="phenomenon-card card-moderate">
+                    <h3 class="phenomenon-title"><a href="https://en.wikipedia.org/wiki/Ehrenstein_illusion" target="_blank" style="color: inherit; text-decoration: underline;">Ehrestein's Illusions</a></h3>
+                    <p class="phenomenon-description">Perceiving illusory brightness and contrast effects from surrounding context</p>
+                    <div class="demo-placeholder" id="ehrestein-demo">
+                        <img src="ehrestein_demo.gif" alt="Ehrestein illusions" style="max-width: 100%; height: auto; border-radius: 6px; display: none;" id="ehrestein-gif">
+                        <div id="ehrestein-placeholder" style="color: #94a3b8; font-style: italic;">Ehrestein brightness illusion</div>
+                    </div>
+                    <button class="demo-btn" onclick="startDemo('ehrestein')" id="ehrestein-btn">Generative Inference</button>
+                </div>
+
+                <div class="phenomenon-card card-moderate">
+                    <h3 class="phenomenon-title"><a href="https://en.wikipedia.org/wiki/Neon_color_spreading" target="_blank" style="color: inherit; text-decoration: underline;">Neon Color Spreading</a></h3>
+                    <p class="phenomenon-description">Illusory color propagation beyond physical boundaries</p>
+                    <div class="demo-placeholder" id="neon-demo">
+                        <img src="neon_demo.gif" alt="Neon color spreading" style="max-width: 100%; height: auto; border-radius: 6px; display: none;" id="neon-gif">
+                        <div id="neon-placeholder" style="color: #94a3b8; font-style: italic;">Color spreading visualization</div>
+                    </div>
+                    <button class="demo-btn" onclick="startDemo('neon')" id="neon-btn">Generative Inference</button>
+                </div>
+
+                <div class="phenomenon-card card-moderate">
+                    <h3 class="phenomenon-title"><a href="https://en.wikipedia.org/wiki/Rubin_vase" target="_blank" style="color: inherit; text-decoration: underline;">Bistable Perception</a></h3>
+                    <p class="phenomenon-description">Prior-dependent interpretation of ambiguous stimuli</p>
+                    <div class="demo-placeholder" id="bistable-demo">
+                        <img src="bistable_demo.gif" alt="Bistable perception" style="max-width: 100%; height: auto; border-radius: 6px; display: none;" id="bistable-gif">
+                        <div id="bistable-placeholder" style="color: #94a3b8; font-style: italic;">Rubin's face-vase demo</div>
+                    </div>
+                    <button class="demo-btn" onclick="startDemo('bistable')" id="bistable-btn">Generative Inference</button>
+                </div>
+
+                <div class="phenomenon-card card-moderate">
+                    <h3 class="phenomenon-title">Gestalt Principles</h3>
+                    <p class="phenomenon-description">Perceptual grouping through similarity, continuity, and closure</p>
+                    <div class="demo-placeholder" id="gestalt-demo">
+                        <img src="gestalt_demo.gif" alt="Gestalt principles" style="max-width: 100%; height: auto; border-radius: 6px; display: none;" id="gestalt-gif">
+                        <div id="gestalt-placeholder" style="color: #94a3b8; font-style: italic;">Gestalt grouping visualization</div>
+                    </div>
+                    <button class="demo-btn" onclick="startDemo('gestalt')" id="gestalt-btn">Generative Inference</button>
+                </div>
+
+                <div class="phenomenon-card card-prior">
+                    <h3 class="phenomenon-title">Pattern Generation</h3>
+                    <p class="phenomenon-description">Seeing structure in noise - imagination and hallucination</p>
+                    <div class="demo-placeholder" id="imagination-demo">
+                        <img src="imagination_demo_combined_slow.gif" alt="Pattern generation" style="max-width: 100%; height: auto; border-radius: 6px; display: none;" id="imagination-gif">
+                        <div id="imagination-placeholder" style="color: #94a3b8; font-style: italic;">Pattern emergence from noise</div>
+                    </div>
+                    <button class="demo-btn" onclick="startDemo('imagination')" id="imagination-btn">Generative Inference</button>
+                </div>
+            </div>
+
+            <div class="repurposing-box">
+                                 <strong>The Power of Repurposing:</strong> During training, feedback pathways carry error signals to update weights. During generative inference, these same pathways carry gradients to update activations toward more probable interpretations under the learned prior. <strong>No additional generative model training or architectural changes required.</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password Modal -->
+    <div id="passwordModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePasswordModal()">&times;</span>
+            <h2>Access Paper</h2>
+            <p>Please enter the password to access the full paper:</p>
+            <br>
+            <input type="password" id="passwordInput" class="password-input" placeholder="Enter password">
+            <button class="btn btn-primary" onclick="checkPassword()">Access Paper</button>
+            <p style="margin-top: 15px; color: #666; font-size: 0.9em;">
+                Contact author for access: tt2740@columbia.edu
+            </p>
+        </div>
+    </div>
+
+    <!-- Demo Modal -->
+    <div id="demoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeDemoModal()">&times;</span>
+            <h2 id="demoTitle">Demo</h2>
+            <div id="demoContent">
+                <p>Interactive demo will be displayed here.</p>
+                <p style="color: #666; font-style: italic;">
+                    This would show the step-by-step emergence of perceptual phenomena through 
+                    feedback-driven generative inference.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPasswordModal() {
+            document.getElementById('passwordModal').style.display = 'block';
+        }
+
+        function closePasswordModal() {
+            document.getElementById('passwordModal').style.display = 'none';
+        }
+
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            // Replace 'your_password' with your actual password
+            if (password === 'your_password') {
+                // Replace with your actual paper URL
+                window.open('path_to_your_paper.pdf', '_blank');
+                closePasswordModal();
+            } else {
+                alert('Incorrect password. Please contact the author for access.');
+            }
+        }
+
+        function startDemo(type) {
+            const gif = document.getElementById(`${type}-gif`);
+            const placeholder = document.getElementById(`${type}-placeholder`);
+            const btn = document.getElementById(`${type}-btn`);
+            
+            if (gif.style.display === 'none') {
+                // Show GIF and hide placeholder
+                gif.style.display = 'block';
+                placeholder.style.display = 'none';
+                btn.textContent = 'Reset';
+                btn.style.background = '#64748b';
+                
+                // Force GIF to restart by changing src
+                const src = gif.src;
+                gif.src = '';
+                gif.src = src;
+                
+            } else {
+                // Hide GIF and show placeholder
+                gif.style.display = 'none';
+                placeholder.style.display = 'block';
+                
+                if (type === 'recognition') {
+                    btn.textContent = 'Conventional Inference';
+                    btn.style.background = '#0099cc';
+                } else {
+                    btn.textContent = 'Generative Inference';
+                    btn.style.background = '#E238EC';
+                }
+            }
+        }
+
+        function closeDemoModal() {
+            document.getElementById('demoModal').style.display = 'none';
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const passwordModal = document.getElementById('passwordModal');
+            const demoModal = document.getElementById('demoModal');
+            if (event.target == passwordModal) {
+                passwordModal.style.display = 'none';
+            }
+            if (event.target == demoModal) {
+                demoModal.style.display = 'none';
+            }
+        }
+
+        // Handle enter key in password input
+        document.getElementById('passwordInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
