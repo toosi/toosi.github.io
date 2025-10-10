@@ -169,6 +169,31 @@
             color: #fff;
             text-decoration: underline;
         }
+        .recent-updates {
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        .recent-updates h2 {
+            color: var(--section-title-color);
+            margin-bottom: 20px;
+        }
+        .update-item {
+            margin-bottom: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+        .update-item:last-child {
+            border-bottom: none;
+        }
+        .update-date {
+            color: var(--name-color);
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .update-text {
+            color: #e0e0e0;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -209,6 +234,25 @@
     </nav>
 
     <section id="projects" class="projects section active">
+        <div class="recent-updates">
+            <h2>Recent Updates</h2>
+            
+            <div class="update-item">
+                <div class="update-date">August 2025</div>
+                <div class="update-text">Paper accepted at Interpreting Cognition in Deep Learning Models Workshop (NeurIPS)</div>
+            </div>
+            
+            <div class="update-item">
+                <div class="update-date">August 2025</div>
+                <div class="update-text">Paper accepted at Mechanistic Interpretability Workshop (NeurIPS)</div>
+            </div>
+            
+            <div class="update-item">
+                <div class="update-date">July 2025</div>
+                <div class="update-text">Awarded a grant from <a href="https://arni-institute.org/" target="_blank" style="color: #10b981;">Institute for Artificial and Natural Intelligence (ARNI)</a> on Modular Computations in AI and Neuroscience: Principles and Applications</div>
+            </div>
+        </div>
+        
         <h2>Research Lines</h2>
         <div class="project">
             <h3><a href="research/generative-inference.html">Neural basis of perception</a></h3>
@@ -293,6 +337,18 @@
         <h2>Publications</h2>
         
         <h3>Journals, Proceedings, and Preprints</h3>
+        
+        <div class="publication">
+            <p class="title">Interpretability at the Network Level: Prior-Guided Drift Diffusion for Neural Circuit Analysis</p>
+            <p class="authors">Toosi, T., & Miller, K. D.</p>
+            <p class="venue">Mechanistic Interpretability Workshop, Neural Information Processing Systems (NeurIPS) (2025)</p>
+        </div>
+        
+        <div class="publication">
+            <p class="title">Unifying Gestalt Principles Through Inference-Time Prior Integration</p>
+            <p class="authors">Toosi, T., & Miller, K. D.</p>
+            <p class="venue">Interpreting Cognition in Deep Learning Models Workshop, Neural Information Processing Systems (NeurIPS) (2025)</p>
+        </div>
         
         <div class="publication">
             <p class="title">Illusions as features: the generative side of recognition</p>
