@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data-Driven Discovery - Tahereh Toosi</title>
+    <style>
+        :root {
+            --name-color: #ff6781;         /* Salmon pink */
+            --section-title-color: #80cbc4; /* Teal */
+        }
+        body {
+            font-family: 'Open Sans', Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #e0e0e0;
+            background-color: #1e1e1e;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #66ccff;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', Arial, sans-serif;
+            color: var(--section-title-color);
+        }
+        h1 {
+            color: var(--name-color);
+            margin-bottom: 20px;
+        }
+        .content {
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .publications {
+            margin-top: 30px;
+        }
+        .publication {
+            margin-bottom: 20px;
+            border-left: 3px solid #66ccff;
+            padding-left: 15px;
+        }
+        .publication p {
+            margin: 5px 0;
+        }
+        .publication .title {
+            font-weight: bold;
+        }
+        .publication .authors {
+            font-style: italic;
+        }
+        .publication .venue {
+            color: #b0b0b0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            margin: 20px 0;
+        }
+        .figure-credit {
+            text-align: center;
+            color: #b0b0b0;
+            font-size: 0.9em;
+            font-style: italic;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+        .figure-credit a {
+            color: #80cbc4;
+            text-decoration: underline;
+        }
+        .figure-credit a:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">← Back to Home</a>
+    
+    <div class="content">
+        <h1>Data-Driven Discovery of Computational Principles in Naturalistic Brain and Behavior</h1>
+        
+        <p>In the era of large-scale neural recordings, rich behavioral assays, and high-dimensional computational models, data-driven discovery stands out as a critical paradigm for uncovering hidden mechanisms of cognition and brain function. Rather than solely testing narrowly-defined hypotheses, leveraging unsupervised or weakly-supervised methods allows us to explore the latent structure in complex neural and behavioral datasets, and thereby uncover computational principles or algorithms that were not anticipated a priori.</p>
+        
+        <p>In Natural Scene Coding Consistency in Genetically-Defined Cell Populations, I advance this data-driven paradigm by introducing Inter-Individual Representational Similarity (IIRS)—a metric that quantifies how consistently genetically-defined cell populations encode naturalistic stimuli across individual animals. Analyzing responses from over 43,000 neurons in the Allen Brain Observatory, I show that inhibitory populations (VIP, SST, PV) exhibit robust, stimulus-selective coding consistency for natural scenes, while excitatory populations show layer-specific variations. Parallel analyses of deep neural networks reveal the same principle: representational similarity across random initializations increases when networks process naturalistic stimuli. Together, these results demonstrate how population-level, data-driven analysis can uncover shared computational principles across brains and models, highlighting the power of discovery-based approaches in modern neuroscience.</p>
+        
+        <img src="../assets/Celltype_plan_allen.png" alt="Cell type plan Allen" style="width:100%;max-width:800px;display:block;margin:20px auto 0 auto;">
+        <div class="figure-credit">Data: <a href="https://observatory.brain-map.org/visualcoding/" target="_blank">Allen Brain Observatory</a></div>
+        
+        <h2>Related Publications</h2>
+        <div class="publications">
+            <div class="publication">
+                <p class="title"><a href="https://www.biorxiv.org/content/10.1101/2025.10.29.685363v1.abstract" target="_blank" style="color: #66ccff; text-decoration: underline;">Natural Scene Coding Consistency in Genetically-Defined Cell Populations</a></p>
+                <p class="authors">Toosi, T., & Miller, K. D.</p>
+                <p class="venue">bioRxiv (2025)</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
