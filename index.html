@@ -5,40 +5,197 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tahereh Toosi - Academic Website</title>
     <style>
+        /* 
+        COLOR ALTERNATIVES - Uncomment to test:
+        
+        Name Color Options:
+        --name-color: #7c3aed;         Current: Modern purple/violet
+        --name-color: #8b5cf6;         Lighter purple
+        --name-color: #6366f1;         Indigo
+        --name-color: #059669;         Emerald green
+        --name-color: #0d9488;         Teal (matches section color)
+        --name-color: #dc2626;         Deep red
+        --name-color: #ea580c;         Orange
+        --name-color: #9333ea;         Deep purple
+        
+        Font Alternatives - Replace in body and h1,h2,h3:
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;  Modern, clean
+        font-family: 'Poppins', sans-serif;  Geometric, friendly
+        font-family: 'Playfair Display', serif;  Elegant serif for headings
+        font-family: 'Lora', serif;  Readable serif
+        font-family: 'Source Sans Pro', sans-serif;  Professional
+        font-family: 'Roboto', sans-serif;  Google's clean font
+        font-family: 'Work Sans', sans-serif;  Modern, versatile
+        */
+        
         :root {
-            --name-color: #ff6781;         /* Salmon pink */
-            --section-title-color: #80cbc4; /* Teal */
+            /* Light theme (default) */
+            --name-color: #fc5203;         /* Warm orange-red - vibrant and modern */
+            --section-title-color: #006699; /* Teal-blue - back to original greenish-blue */
+            --text-primary: #1e293b;        /* Slate-800 - richer dark */
+            --text-secondary: #475569;      /* Slate-600 - softer medium gray */
+            --text-tertiary: #64748b;       /* Slate-500 - lighter gray */
+            --accent-color: #0088aa;        /* Teal-blue accent - slightly brighter */
+            --border-color: #e2e8f0;        /* Slate-200 - soft borders */
+            --bg-subtle: #f8fafc;          /* Slate-50 - very light background */
+            --bg-primary: #ffffff;         /* White background */
+            --bg-secondary: #f9f9f9;       /* Light gray background */
+            --text-body: #333333;          /* Dark text */
+            --update-text: #333333;         /* Update text color */
+            --update-details: #666666;      /* Update details color */
+            /* Mobile layout variables */
+            --mobile-name-top-offset: 45px;  /* Adjust vertical position of name relative to image */
+            --mobile-content-gap: 60px;   /* Gap between image+name row and description text below */
         }
+        
+        /* Dark theme */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --name-color: #ff6b3d;         /* Slightly brighter orange-red for dark theme */
+                --section-title-color: #4dd0e1; /* Lighter teal-blue for dark theme */
+                --text-primary: #e2e8f0;        /* Light slate for dark theme */
+                --text-secondary: #cbd5e1;      /* Lighter gray */
+                --text-tertiary: #94a3b8;       /* Medium gray */
+                --accent-color: #5dd3e8;        /* Brighter teal accent */
+                --border-color: #334155;        /* Dark slate borders */
+                --bg-subtle: #1e293b;          /* Dark slate background */
+                --bg-primary: #0f172a;         /* Very dark blue background */
+                --bg-secondary: #1e293b;       /* Dark slate for cards */
+                --text-body: #e2e8f0;          /* Light text */
+                --update-text: #e2e8f0;        /* Light update text */
+                --update-details: #94a3b8;     /* Lighter update details */
+            }
+        }
+        
         body {
             font-family: 'Open Sans', Verdana, sans-serif;
             line-height: 1.6;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            color: #e0e0e0;
-            background-color: #1e1e1e;
+            color: var(--text-body);
+            background-color: var(--bg-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         header {
             display: flex;
             align-items: center;
             margin-bottom: 30px;
         }
+        .header-top {
+            display: contents;
+        }
         .profile-img {
             width: 200px;
             border-radius: 50%;
             margin-right: 30px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            flex-shrink: 0;
         }
         .header-content {
             flex: 1;
         }
         h1, h2, h3 {
             font-family: 'Montserrat', Arial, sans-serif;
-            color: #66ccff;
+            color: var(--section-title-color);
+            font-weight: 600;
+        }
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--section-title-color), transparent);
         }
         h1 {
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             color: var(--name-color);
+        }
+        .header-top h1 {
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .header-top h1:hover {
+            opacity: 0.8;
+        }
+        .header-top h1 a {
+            color: inherit;
+            text-decoration: none;
+        }
+        /* Fixed name on left when scrolled (desktop only) */
+        .fixed-name {
+            display: none;
+        }
+        @media (min-width: 769px) {
+            .fixed-name {
+                position: fixed;
+                left: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 1000;
+                background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-subtle) 100%);
+                backdrop-filter: blur(10px);
+                padding: 15px 20px;
+                border-radius: 12px;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+                border: 1px solid var(--border-color);
+                cursor: pointer;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            @media (prefers-color-scheme: dark) {
+                .fixed-name {
+                    box-shadow: 0 4px 16px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3);
+                }
+            }
+            .fixed-name:hover {
+                box-shadow: 0 8px 24px rgba(0, 102, 153, 0.12), 0 4px 12px rgba(0,0,0,0.08);
+                transform: translateY(-50%) scale(1.02);
+            }
+            .fixed-name h1 {
+                margin: 0;
+                font-size: 0.98em;
+                color: rgba(102, 102, 102, 0.7);
+            }
+            @media (prefers-color-scheme: dark) {
+                .fixed-name h1 {
+                    color: rgba(200, 200, 200, 0.9);
+                }
+            }
+            .fixed-name a {
+                color: inherit;
+                text-decoration: none;
+            }
+        }
+        .affiliation {
+            color: var(--text-tertiary);
+            font-size: 1em;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .affiliation-line {
+            display: block;
+        }
+        .research-description {
+            color: var(--text-body);
+            margin-top: 10px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .support-section {
+            color: var(--text-tertiary);
+            font-size: 0.95em;
+            margin-top: 15px;
+            line-height: 1.5;
+            font-style: italic;
         }
         .projects {
             margin-top: 40px;
@@ -48,16 +205,28 @@
         }
         .project {
             margin-bottom: 30px;
-            padding: 20px;
-            border-radius: 8px;
-            background-color: #2a2a2a;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 24px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-subtle) 100%);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @media (prefers-color-scheme: dark) {
+            .project {
+                box-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+            }
+        }
+        .project:hover {
+            box-shadow: 0 10px 25px rgba(0, 102, 153, 0.1), 0 4px 10px rgba(0,0,0,0.08);
+            transform: translateY(-3px);
+            border-color: rgba(0, 102, 153, 0.2);
         }
         .project h3 {
             margin-top: 0;
         }
         .project h4 {
-            color: #b0b0b0;
+            color: var(--text-tertiary);
             font-family: 'Open Sans', Verdana, sans-serif;
             font-size: 1.1em;
             margin: 10px 0;
@@ -84,11 +253,15 @@
             color: #333333;
         }
         .project a {
-            color: var(--section-title-color);
+            color: #9ca3af;
             text-decoration: underline;
+            display: inline-block;
+            transition: all 0.2s ease;
         }
         .project a:hover {
-            text-decoration: none;
+            color: #6b7280;
+            text-decoration: underline;
+            transform: translateY(-2px);
         }
         .project .gif-container {
             display: flex;
@@ -102,24 +275,61 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         .publications {
-            margin-top: 40px;
+            margin-top: 60px;
+            padding-top: 20px;
+        }
+        .talks {
+            margin-top: 60px;
+            padding-top: 20px;
         }
         .publication {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             border-left: 3px solid var(--section-title-color);
-            padding-left: 15px;
+            padding-left: 18px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            background: linear-gradient(to right, rgba(0, 102, 153, 0.02), transparent);
+            border-radius: 0 4px 4px 0;
+        }
+        .publication:has(.title a) {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .publication:has(.title a):hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 102, 153, 0.1), 0 4px 10px rgba(0,0,0,0.08);
+            border-left-color: var(--accent-color);
+            border-left-width: 4px;
+            padding-left: 22px;
+            background: linear-gradient(to right, rgba(0, 102, 153, 0.05), transparent);
         }
         .publication p {
             margin: 5px 0;
         }
         .publication .title {
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 1.05em;
+            color: var(--text-primary);
+            margin-bottom: 4px;
         }
         .publication .authors {
             font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
         }
         .publication .venue {
-            color: #b0b0b0;
+            color: var(--text-tertiary);
+            font-size: 0.95em;
+        }
+        .talks .publication .title {
+            font-weight: 600;
+            font-size: 1.05em;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+        .talks .publication .venue {
+            font-style: italic;
+            color: var(--text-tertiary);
+            font-size: 0.95em;
         }
         .publications h2 {
             color: var(--section-title-color);
@@ -132,20 +342,22 @@
         }
         .nav a {
             padding: 10px 20px;
-            background-color: #2a2a2a;
+            background-color: var(--bg-subtle);
             color: var(--section-title-color);
             text-decoration: none;
             border-radius: 4px;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            border: 1px solid var(--border-color);
         }
         .nav a:hover, .nav a.active {
-            background-color: #333;
+            background-color: var(--bg-secondary);
+            border-color: var(--accent-color);
         }
-        .section {
-            display: none;
+        html {
+            scroll-behavior: smooth;
         }
-        .section.active {
-            display: block;
+        section {
+            scroll-margin-top: 20px;
         }
         .social-icons {
             display: flex;
@@ -163,11 +375,20 @@
             transition: fill 0.3s;
         }
         .social-icon:hover svg {
-            fill: #99ddff;
+            fill: var(--section-title-color);
         }
         .publication .title a {
-            color: #fff;
+            color: #5b8a9f !important;
             text-decoration: underline;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+        .publication .title a:hover {
+            color: #4a7a8f !important;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+            transform: translateY(-2px);
         }
         .recent-updates {
             margin-top: 40px;
@@ -180,48 +401,116 @@
         .update-item {
             margin-bottom: 15px;
             padding: 10px 0;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid var(--border-color);
         }
         .update-item:last-child {
             border-bottom: none;
         }
         .update-date {
-            color: var(--name-color);
+            color: #fc5203;
             font-weight: bold;
             font-size: 0.9em;
         }
         .update-text {
-            color: #e0e0e0;
+            color: var(--update-text);
             margin-top: 5px;
         }
         .update-details {
-            color: #b0b0b0;
+            color: var(--update-details);
             font-size: 0.9em;
             margin-top: 3px;
             font-style: italic;
         }
+        
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                position: relative;
+            }
+            .profile-img {
+                width: 120px;
+                height: 120px;
+                margin-right: 15px;
+                margin-bottom: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+                flex-shrink: 0;
+            }
+            .header-content {
+                width: 100%;
+                padding-left: 135px;
+                min-height: 120px;
+            }
+            .header-top {
+                display: flex !important;
+                flex-direction: row;
+                align-items: center;
+                gap: 0;
+                width: calc(100% - 135px);
+                margin-bottom: 0;
+                margin-top: var(--mobile-name-top-offset);
+            }
+            .header-top h1 {
+                margin: 0;
+                flex: 1;
+                font-size: 1.5em;
+            }
+            /* Make description content start from left edge, below image+name row */
+            .header-content .affiliation,
+            .header-content .research-description,
+            .header-content .support-section,
+            .header-content .social-icons {
+                margin-left: -135px;
+                padding-left: 0;
+                width: 100%;
+            }
+            /* Push all description content down below the image+name row */
+            .header-content .affiliation {
+                margin-top: var(--mobile-content-gap);
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Fixed name that appears when scrolled (desktop only) -->
+    <div class="fixed-name" id="fixedName">
+        <h1><a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Tahereh Toosi</a></h1>
+    </div>
     <header>
         <img src="assets/profile_400x400-.png" alt="Tahereh Toosi" class="profile-img">
         <div class="header-content">
-            <h1>Tahereh Toosi, PhD</h1>
-            <p>
-                Associate Research Scientist at the <a href="https://ctn.zuckermaninstitute.columbia.edu/about" target="_blank" style="color: #10b981;">Center for Theoretical Neuroscience</a>, Columbia University. My research bridges computational neuroscience and AI, focusing on building intrinsically aligned models of visual perception. Supported by an <a href="https://reporter.nih.gov/project-details/1K99EY035357-01" target="_blank" style="color: #10b981;">NIH K99/R00</a> award and a grant from <a href="https://arni-institute.org/" target="_blank" style="color: #10b981;">Institute for Artificial and Natural Intelligence (ARNI)</a>, my research leverages AI tools and biological constraints to understand core intelligence.
+            <div class="header-top">
+                <h1><a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" style="color: inherit; text-decoration: none;">Tahereh Toosi, PhD</a></h1>
+            </div>
+            <div class="affiliation">
+                <span class="affiliation-line">Associate Research Scientist</span>
+                <span class="affiliation-line"><a href="https://ctn.zuckermaninstitute.columbia.edu/" target="_blank" style="color: #9ca3af;">Center for Theoretical Neuroscience</a></span>
+                <span class="affiliation-line">Columbia University</span>
+            </div>
+            <p class="research-description">
+                My research bridges computational neuroscience and AI, focusing on building intrinsically aligned models of visual perception. My research leverages AI tools and biological constraints to understand core intelligence.
             </p>
+            <div class="support-section">
+                Supported by an <a href="https://reporter.nih.gov/project-details/1K99EY035357-01" target="_blank" style="color: #9ca3af;">NIH K99/R00</a> award and Neural Mechanisms grant from <a href="https://arni-institute.org/research/" target="_blank" style="color: #9ca3af;">Institute for Artificial and Natural Intelligence (ARNI)/NSF</a>.
+            </div>
             <div class="social-icons">
                 <a href="https://github.com/toosi" target="_blank" class="social-icon" title="GitHub">
-                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                    <img src="https://img.icons8.com/?size=100&id=akG4VRhAoSii&format=png&color=000000" alt="GitHub" style="width: 24px; height: 24px;">
                 </a>
                 <a href="https://twitter.com/taherehtoosi" target="_blank" class="social-icon" title="Twitter">
-                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                    <img src="https://img.icons8.com/?size=100&id=0Yx1qZsfjtk0&format=png&color=000000" alt="Twitter" style="width: 24px; height: 24px;">
                 </a>
                 <a href="https://bsky.app/profile/taherehtoosi.bsky.social" target="_blank" class="social-icon" title="Bluesky">
-                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.3723 0 0 5.3723 0 12s5.3723 12 12 12 12-5.3723 12-12S18.6277 0 12 0zm3.7416 16.0004c-.113.0748-.3107.1687-.6107.2527-1.0766.284-2.3818.4366-3.1309.4366-.749 0-2.0542-.1526-3.1308-.4379-.3001-.0827-.4978-.1766-.6108-.2527a.1466.1466 0 0 1-.0628-.12v-2.3543a.1401.1401 0 0 1 .086-.131c.344-.1508.6587-.3297.9668-.5326-.1868-.125-.3616-.24-.527-.3466-1.3054-1.0752-1.9804-2.6215-1.9804-3.3946 0-.9401.6337-2.1857 1.5664-3.041C9.2111 5.327 10.3607 4.8312 12 4.8312c1.6393 0 2.7889.4958 3.6914 1.3477.9327.8553 1.5664 2.1009 1.5664 3.041 0 .7731-.675 2.3194-1.9804 3.3946-.1654.1066-.3402.2216-.527.3466.3055.203.6228.3819.9668.5326.052.02.086.0734.086.131v2.3542c0 .048-.0229.0934-.0628.12z"/></svg>
+                    <img src="https://img.icons8.com/?size=100&id=3ovMFy5JDSWq&format=png&color=000000" alt="Bluesky" style="width: 24px; height: 24px;">
+                </a>
+                <a href="https://scholar.google.com/citations?user=fDjSvTsAAAAJ&hl=en" target="_blank" class="social-icon" title="Google Scholar">
+                    <img src="https://img.icons8.com/?size=100&id=drPiDBy9kkJ3&format=png&color=000000" alt="Google Scholar" style="width: 24px; height: 24px;">
                 </a>
                 <a href="https://www.linkedin.com/in/tahereh-toosi-45b99014/" target="_blank" class="social-icon" title="LinkedIn">
-                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    <img src="https://img.icons8.com/?size=100&id=13930&format=png&color=000000" alt="LinkedIn" style="width: 24px; height: 24px;">
                 </a>
                 <!-- <a href="mailto:tahereh.toosi@columbia.edu" class="social-icon" title="Email">
                     <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
@@ -234,27 +523,27 @@
     </header>
 
     <nav class="nav">
-        <a href="#projects" class="active" onclick="showSection('projects')">Research Lines</a>
-        <a href="#publications" onclick="showSection('publications')">Publications</a>
-        <a href="#talks" onclick="showSection('talks')">Talks</a>
+        <a href="#research-lines">Research Lines</a>
+        <a href="#publications">Publications</a>
+        <a href="#talks">Talks</a>
     </nav>
 
-    <section id="projects" class="projects section active">
+    <section id="projects" class="projects">
         <div class="recent-updates">
             <h2>Recent Updates</h2>
             
             <div class="update-item">
                 <div class="update-date">October 2025</div>
                 <div class="update-text">Preprints released:</div>
-                <div class="update-details"><a href="https://www.biorxiv.org/content/10.1101/2025.10.21.683535v2" target="_blank" style="color: #80cbc4; text-decoration: underline;">"Generative inference unifies feedback processing for learning and perception in natural and artificial vision"</a></div>
+                <div class="update-details"><a href="https://www.biorxiv.org/content/10.1101/2025.10.21.683535v2" target="_blank" style="color: #006699; text-decoration: underline;">"Generative inference unifies feedback processing for learning and perception in natural and artificial vision"</a></div>
                 <div class="update-details">Toosi, T., & Miller, K. D.</div>
                 <div class="update-details" style="margin-top: 8px;">
-                    <a href="https://www.biorxiv.org/content/10.1101/2025.10.21.683535v2" target="_blank" style="color: #80cbc4; text-decoration: underline; margin-right: 15px;">Paper</a>
-                    <a href="https://x.com/taherehtoosi/status/1981716460549382231" target="_blank" style="color: #80cbc4; text-decoration: underline; margin-right: 15px;">Summary</a>
-                    <a href="https://huggingface.co/spaces/ttoosi/GenerativeInferenceDemo" target="_blank" style="color: #80cbc4; text-decoration: underline; margin-right: 15px;">Demo</a>
-                    <a href="https://github.com/toosi/Generative_Inference_Perception" target="_blank" style="color: #80cbc4; text-decoration: underline;">Code</a>
+                    <a href="https://www.biorxiv.org/content/10.1101/2025.10.21.683535v2" target="_blank" style="color: #006699; text-decoration: underline; margin-right: 15px;">Paper</a>
+                    <a href="https://x.com/taherehtoosi/status/1981716460549382231" target="_blank" style="color: #006699; text-decoration: underline; margin-right: 15px;">Summary</a>
+                    <a href="https://huggingface.co/spaces/ttoosi/GenerativeInferenceDemo" target="_blank" style="color: #006699; text-decoration: underline; margin-right: 15px;">Demo</a>
+                    <a href="https://github.com/toosi/Generative_Inference_Perception" target="_blank" style="color: #006699; text-decoration: underline;">Code</a>
                 </div>
-                <div class="update-details" style="margin-top: 15px;"><a href="https://www.biorxiv.org/content/10.1101/2025.10.29.685363v1.abstract" target="_blank" style="color: #80cbc4; text-decoration: underline;">"Natural Scene Coding Consistency in Genetically-Defined Cell Populations"</a></div>
+                <div class="update-details" style="margin-top: 15px;"><a href="https://www.biorxiv.org/content/10.1101/2025.10.29.685363v1.abstract" target="_blank" style="color: #006699; text-decoration: underline;">"Natural Scene Coding Consistency in Genetically-Defined Cell Populations"</a></div>
                 <div class="update-details">Toosi, T., & Miller, K. D.</div>
             </div>
             
@@ -263,19 +552,19 @@
                 <div class="update-text">Papers accepted at NeurIPS workshops:</div>
                 <div class="update-details">"Unifying Gestalt Principles Through Inference-Time Prior Integration"</div>
                 <div class="update-details">Toosi, T., & Miller, K. D. — Interpreting Cognition in Deep Learning Models Workshop</div>
-                <div class="update-details" style="margin-top: 10px;"><a href="#" target="_blank" style="color: #80cbc4; text-decoration: underline;">"Interpretability at the Network Level: Prior-Guided Drift Diffusion for Neural Circuit Analysis"</a></div>
+                <div class="update-details" style="margin-top: 10px;"><a href="#" target="_blank" style="color: #006699; text-decoration: underline;">"Interpretability at the Network Level: Prior-Guided Drift Diffusion for Neural Circuit Analysis"</a></div>
                 <div class="update-details">Toosi, T. — Mechanistic Interpretability Workshop</div>
             </div>
             
             <div class="update-item">
                 <div class="update-date">July 2025</div>
-                <div class="update-text">Awarded a grant from <a href="https://arni-institute.org/" target="_blank" style="color: #10b981;">Institute for Artificial and Natural Intelligence (ARNI)</a></div>
+                <div class="update-text">Awarded a grant from <a href="https://arni-institute.org/" target="_blank" style="color: #9ca3af;">Institute for Artificial and Natural Intelligence (ARNI)</a></div>
                 <div class="update-details">"Modular Computations in AI and Neuroscience: Principles and Applications"</div>
                 <div class="update-details">Toosi, T., Miller, K. D., & Abbott, L. F.</div>
             </div>
         </div>
         
-        <h2>Research Lines</h2>
+        <h2 id="research-lines">Research Lines</h2>
         <div class="project">
             <h3><a href="research/generative-inference.html">Neural basis of perception</a></h3>
             <h4>Understanding how neural networks give rise to perceptual grouping, illusory percepts, and imagination </h4>
@@ -303,7 +592,7 @@
         <div class="project">
             <h3><a href="research/data-driven-discovery.html">Data-Driven Discovery of Computational Principles in Naturalistic Brain and Behavior</a></h3>
             <img src="assets/Celltype_plan_allen.png" alt="Cell type plan Allen" style="width:100%;max-width:800px;display:block;margin:20px auto 0 auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.3);" />
-            <div style="text-align:center;color:#b0b0b0;font-size:0.9em;font-style:italic;margin-top:-10px;margin-bottom:15px;">Data: <a href="https://observatory.brain-map.org/visualcoding/" target="_blank" style="color:#80cbc4;text-decoration:underline;">Allen Brain Observatory</a></div>
+            <div style="text-align:center;color:#666666;font-size:0.9em;font-style:italic;margin-top:-10px;margin-bottom:15px;">Data: <a href="https://observatory.brain-map.org/visualcoding/" target="_blank" style="color:#006699;text-decoration:underline;">Allen Brain Observatory</a></div>
             <div class="tags">
                 <span class="tag neuroscience">Neuroscience</span>
                 <span class="tag ai">AI</span>
@@ -365,16 +654,64 @@
         </div>
     </section>
     
-    <section id="publications" class="publications section">
-        <h2>Publications</h2>
-        
-        <h3>Journals, Proceedings, and Preprints</h3>
+    <section id="publications" class="publications">
+        <h2>Journals, Proceedings, and Preprints</h2>
         
         <div class="publication">
-            <p class="title">Interpretability at the Network Level: Prior-Guided Drift Diffusion for Neural Circuit Analysis</p>
-            <p class="authors">Toosi, T.</p>
+            <p class="title"><a href="https://www.biorxiv.org/content/early/2025/10/23/2025.10.21.683535" target="_blank">Generative inference unifies feedback processing for learning and perception in natural and artificial vision</a></p>
+            <p class="authors">Toosi, T., & Miller, K. D.</p>
+            <p class="venue">bioRxiv (2025)</p>
+        </div>
+        
+        <div class="publication">
+            <p class="title"><a href="https://www.biorxiv.org/content/early/2025/10/29/2025.10.29.685363" target="_blank">Natural scene coding consistency in genetically-defined cell populations</a></p>
+            <p class="authors">Toosi, T., & Miller, K. D.</p>
+            <p class="venue">bioRxiv (2025)</p>
+        </div>
+        
+        <div class="publication">
+            <p class="title"><a href="https://openreview.net/forum?id=vL28JhJDEM" target="_blank">Interpretability at the Network Level: Prior-Guided Drift Diffusion for neural circuit analysis</a></p>
+            <p class="authors">Toosi, T., & Miller, K. D.</p>
             <p class="venue">Mechanistic Interpretability Workshop, Neural Information Processing Systems (NeurIPS) (2025)</p>
         </div>
+        
+        <div class="publication">
+            <p class="title"><a href="https://openreview.net/forum?id=SKXsct2WB2" target="_blank">Illusions as features: the generative side of recognition</a></p>
+            <p class="authors">Toosi, T., & Miller, K. D.</p>
+            <p class="venue">Workshop on Scientific Methods for Understanding Deep Learning, Advances in Neural Information Processing Systems (NeurIPS) (2024)</p>
+        </div>
+        
+        <div class="publication">
+            <p class="title"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11567678/" target="_blank">Brain-like flexible visual inference by harnessing feedback-feedforward alignment</a></p>
+            <p class="authors">Toosi, T., & Issa, E. B.</p>
+            <p class="venue">Advances in Neural Information Processing Systems (NeurIPS) (2023)</p>
+        </div>
+        
+        <div class="publication">
+            <p class="title"><a href="https://arxiv.org/abs/2312.08545" target="_blank">Representational constraints underlying similarity between task-optimized neural systems</a></p>
+            <p class="authors">Toosi, T.</p>
+            <p class="venue">UniReps Workshop, Advances in Neural Information Processing Systems (NeurIPS) (2023)</p>
+        </div>
+        
+        <div class="publication">
+            <p class="title"><a href="https://openreview.net/forum?id=mCmerkTCG2S" target="_blank">Brain-like temporal straightening of natural movies in robust feedforward neural networks</a></p>
+            <p class="authors">Toosi, T., & Issa, E. B.</p>
+            <p class="venue">International Conference on Learning Representations (ICLR) (2023)</p>
+        </div>
+        
+        <div class="publication">
+            <p class="title"><a href="https://www.sciencedirect.com/science/article/pii/S2589004222020612" target="_blank">Marmoset core visual object recognition behavior is comparable to that of macaques and humans</a></p>
+            <p class="authors">Kell, A. J. E., Bokor, S., Jeon, Y., Toosi, T., & Issa, E. B.</p>
+            <p class="venue">iScience (2023)</p>
+        </div>
+        
+        <div class="publication">
+            <p class="title"><a href="https://journals.physiology.org/doi/full/10.1152/jn.00969.2016" target="_blank">Learning temporal context enhances the prestimulus alpha oscillations in the parietal cortex and improves the visual discrimination performance</a></p>
+            <p class="authors">Toosi, T., Tousi, E. K., & Esteky, H.</p>
+            <p class="venue">Journal of Neurophysiology (2016)</p>
+        </div>
+        
+        <h2>Recent Peer Reviewed Abstracts</h2>
         
         <div class="publication">
             <p class="title">Unifying Gestalt Principles Through Inference-Time Prior Integration</p>
@@ -383,47 +720,9 @@
         </div>
         
         <div class="publication">
-            <p class="title">Illusions as features: the generative side of recognition</p>
-            <p class="authors">Toosi, T., & Miller, K. D.</p>
-            <p class="venue">Workshop on Scientific Methods for Understanding Deep Learning, Advances in Neural Information Processing Systems (NeurIPS) (2024)</p>
-        </div>
-        
-        <div class="publication">
-            <p class="title"><a href="https://papers.nips.cc/paper_files/paper/2023/file/b29ec434e049fb96f3c4245a405ee976-Supplemental-Conference.pdf" target="_blank" style="color:#fff;text-decoration:underline;">Brain-like flexible visual inference by harnessing feedback-feedforward alignment</a></p>
-            <p class="authors">Toosi, T., & Issa, E. B.</p>
-            <p class="venue">Advances in Neural Information Processing Systems (NeurIPS) (2023)</p>
-        </div>
-        
-        <div class="publication">
-            <p class="title"><a href="https://arxiv.org/abs/2308.13870" target="_blank" style="color:#fff;text-decoration:underline;">Brain-like representational straightening of natural movies in robust feedforward neural networks</a></p>
-            <p class="authors">Toosi, T., & Issa, E. B.</p>
-            <p class="venue">International Conference on Learning Representations (ICLR) (2023)</p>
-        </div>
-        
-        <div class="publication">
-            <p class="title">Representational constraints underlying similarity between task-optimized neural systems</p>
-            <p class="authors">Toosi, T.</p>
-            <p class="venue">arXiv (2023)</p>
-        </div>
-        
-        <div class="publication">
-            <p class="title">Marmoset core visual object recognition behavior is comparable to that of macaques and humans</p>
-            <p class="authors">Kell, A. J. E., Bokor, S., Jeon, Y., Toosi, T., & Issa, E. B.</p>
-            <p class="venue">iScience (2023)</p>
-        </div>
-        
-        <div class="publication">
-            <p class="title">Learning temporal context enhances the prestimulus alpha oscillations in the parietal cortex and improves the visual discrimination performance</p>
-            <p class="authors">Toosi, T., Tousi, E. K., & Esteky, H.</p>
-            <p class="venue">Journal of Neurophysiology (2016)</p>
-        </div>
-        
-        <h3>Recent Peer Reviewed Abstracts</h3>
-        
-        <div class="publication">
             <p class="title">A unified computational framework for visual dysfunctions in psychosis</p>
             <p class="authors">Toosi, T., & Miller, K. D.</p>
-            <p class="venue">Journal of Vision (2025)</p>
+            <p class="venue">Vision Science Society (2025)</p>
         </div>
         
         <div class="publication">
@@ -441,13 +740,7 @@
         <div class="publication">
             <p class="title">Emergence of illusory contours in robust deep neural networks by accumulation of implicit priors</p>
             <p class="authors">Toosi, T., & Miller, K. D.</p>
-            <p class="venue">Computational and Systems Neuroscience (Cosyne) (2024)</p>
-        </div>
-        
-        <div class="publication">
-            <p class="title">Representational constraints underlying similarity between task-optimized neural systems</p>
-            <p class="authors">Toosi, T.</p>
-            <p class="venue">Unifying Representations in Neural Models Workshop, Neural Information Processing Systems (NeurIPS) (2023)</p>
+            <p class="venue">Computational and Systems Neuroscience (CoSyNe) (2024)</p>
         </div>
         
         <div class="publication">
@@ -463,17 +756,22 @@
         </div>
     </section>
 
-    <section id="talks" class="talks section">
+    <section id="talks" class="talks">
         <h2>Invited Talks</h2>
         
         <div class="publication">
-            <p class="title">Generative inference in object recognition models—A unifying framework for discriminative and generative computations in vision</p>
-            <p class="venue">TigerBrain Research Symposium, Princeton University (2024)</p>
+            <p class="title">A Unified Computational Framework for Perceptual Aberrations in Schizophrenia</p>
+            <p class="venue">Horga Lab, New York State Psychiatric Institute (2025)</p>
+        </div>
+
+        <div class="publication">
+            <p class="title">Intrinsic alignment to natural intelligence by integrating learned priors</p>
+            <p class="venue">Gatsby Tri-Center Annual Meeting, University College London (2025)</p>
         </div>
 
         <div class="publication">
             <p class="title">Generative inference in object recognition models—A unifying framework for discriminative and generative computations in vision</p>
-            <p class="venue">From Neuroscience to Artificially Intelligent Systems, Cold Spring Harbor Laboratory (2024)</p>
+            <p class="venue">Johns Hopkins Kavli Neuroscience Discovery Institute, Baltimore (2025)<br>Visual Inference Lab, Columbia University (2025)<br>TigerBrain Research Symposium, Princeton University (2024)<br>From Neuroscience to Artificially Intelligent Systems, Cold Spring Harbor Laboratory (2024)</p>
         </div>
 
         <div class="publication">
@@ -518,28 +816,10 @@
 
         <div class="publication">
             <p class="title">Symbiotic learning of feedforward and feedback networks</p>
-            <p class="venue">From Neuroscience to Artificially Intelligent Systems, Cold Spring Harbor Laboratory, 2020</p>
+            <p class="venue">From Neuroscience to Artificially Intelligent Systems, Cold Spring Harbor Laboratory (2020)</p>
         </div>
     </section>
     <script>
-        function showSection(sectionId) {
-            // Hide all sections
-            document.querySelectorAll('.section').forEach(function(section) {
-                section.classList.remove('active');
-            });
-            
-            // Show the selected section
-            document.getElementById(sectionId).classList.add('active');
-            
-            // Update active nav item
-            document.querySelectorAll('.nav a').forEach(function(navItem) {
-                navItem.classList.remove('active');
-                if (navItem.getAttribute('href') === '#' + sectionId) {
-                    navItem.classList.add('active');
-                }
-            });
-        }
-
         // Visitor counter for all visitors
         async function updateCounter() {
             try {
@@ -559,8 +839,9 @@
                     counterDisplay.style.position = 'fixed';
                     counterDisplay.style.bottom = '20px';
                     counterDisplay.style.right = '20px';
-                    counterDisplay.style.backgroundColor = 'rgba(0,0,0,0.8)';
-                    counterDisplay.style.color = '#80cbc4';
+                    counterDisplay.style.backgroundColor = 'rgba(255,255,255,0.9)';
+                    counterDisplay.style.color = '#006699';
+                    counterDisplay.style.border = '1px solid #e0e0e0';
                     counterDisplay.style.padding = '8px 15px';
                     counterDisplay.style.borderRadius = '8px';
                     counterDisplay.style.fontSize = '14px';
@@ -577,6 +858,25 @@
 
         // Initialize counter when the page loads
         document.addEventListener('DOMContentLoaded', updateCounter);
+
+        // Show/hide fixed name based on scroll position (desktop only)
+        function handleScroll() {
+            const fixedName = document.getElementById('fixedName');
+            if (fixedName && window.innerWidth >= 769) {
+                if (window.scrollY > 200) {
+                    fixedName.style.display = 'block';
+                } else {
+                    fixedName.style.display = 'none';
+                }
+            }
+        }
+
+        // Add scroll event listener
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll);
+        
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', handleScroll);
     </script>
 </body>
 </html>
