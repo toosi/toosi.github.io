@@ -6,17 +6,59 @@
     <title>Computational and theoretical understanding of regulatory mechanisms shaping natural vision - Tahereh Toosi</title>
     <style>
         :root {
-            --name-color: #ff6781;         /* Salmon pink */
-            --section-title-color: #80cbc4; /* Teal */
+            /* Light theme (default) */
+            --name-color: #fc5203;         /* Warm orange-red */
+            --section-title-color: #006699; /* Teal-blue */
+            --text-primary: #1e293b;        /* Slate-800 */
+            --text-secondary: #475569;      /* Slate-600 */
+            --text-tertiary: #64748b;       /* Slate-500 */
+            --accent-color: #0088aa;        /* Teal-blue accent */
+            --border-color: #e2e8f0;        /* Slate-200 */
+            --bg-subtle: #f8fafc;          /* Slate-50 */
+            --bg-primary: #ffffff;         /* White background */
+            --bg-secondary: #f9f9f9;       /* Light gray background */
+            --text-body: #333333;          /* Dark text */
+            --link-color: #5b8a9f;         /* Muted teal-blue for links */
         }
+        
+        /* Dark theme */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --name-color: #ff6b3d;         /* Brighter orange-red for dark theme */
+                --section-title-color: #4dd0e1; /* Lighter teal-blue */
+                --text-primary: #e2e8f0;        /* Light slate */
+                --text-secondary: #cbd5e1;      /* Lighter gray */
+                --text-tertiary: #94a3b8;       /* Medium gray */
+                --accent-color: #5dd3e8;        /* Brighter teal accent */
+                --border-color: #334155;        /* Dark slate borders */
+                --bg-subtle: #1e293b;          /* Dark slate background */
+                --bg-primary: #0f172a;         /* Very dark blue background */
+                --bg-secondary: #1e293b;       /* Dark slate for cards */
+                --text-body: #e2e8f0;          /* Light text */
+                --link-color: #5dd3e8;          /* Brighter link color for dark theme */
+            }
+        }
+        
         body {
             font-family: 'Open Sans', Verdana, sans-serif;
             line-height: 1.6;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            color: #ffffff;
-            background-color: #000000;
+            color: var(--text-body);
+            background-color: var(--bg-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--section-title-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+            color: var(--accent-color);
         }
         h1, h2, h3 {
             font-family: 'Montserrat', Arial, sans-serif;
@@ -28,30 +70,45 @@
         a {
             color: var(--section-title-color);
             text-decoration: none;
+            transition: color 0.2s ease;
         }
         a:hover {
             text-decoration: underline;
+            color: var(--accent-color);
         }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
+        p, li {
+            color: var(--text-body);
         }
         .publication {
             margin: 20px 0;
             padding: 15px;
-            background-color: #1a1a1a;
+            background-color: var(--bg-secondary);
             border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        @media (prefers-color-scheme: dark) {
+            .publication {
+                box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
         }
         .publication .title {
-            font-weight: bold;
-            color: #ffffff;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .publication .title a {
+            color: var(--link-color);
+            text-decoration: underline;
+        }
+        .publication .title a:hover {
+            color: var(--accent-color);
         }
         .publication .authors {
             font-style: italic;
-            color: #b0b0b0;
+            color: var(--text-secondary);
         }
         .publication .venue {
-            color: var(--section-title-color);
+            color: var(--text-tertiary);
         }
     </style>
 </head>
@@ -95,4 +152,4 @@
         <p class="venue">arXiv (2023)</p>
     </div> -->
 </body>
-</html> 
+</html>

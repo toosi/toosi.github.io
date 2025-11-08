@@ -6,21 +6,52 @@
     <title>Mechanistic Interpretability - Tahereh Toosi</title>
     <style>
         :root {
-            --name-color: #ff6781;         /* Salmon pink */
-            --section-title-color: #80cbc4; /* Teal */
+            /* Light theme (default) */
+            --name-color: #fc5203;         /* Warm orange-red */
+            --section-title-color: #006699; /* Teal-blue */
+            --text-primary: #1e293b;        /* Slate-800 */
+            --text-secondary: #475569;      /* Slate-600 */
+            --text-tertiary: #64748b;       /* Slate-500 */
+            --accent-color: #0088aa;        /* Teal-blue accent */
+            --border-color: #e2e8f0;        /* Slate-200 */
+            --bg-subtle: #f8fafc;          /* Slate-50 */
+            --bg-primary: #ffffff;         /* White background */
+            --bg-secondary: #f9f9f9;       /* Light gray background */
+            --text-body: #333333;          /* Dark text */
+            --link-color: #5b8a9f;         /* Muted teal-blue for links */
         }
+        
+        /* Dark theme */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --name-color: #ff6b3d;         /* Brighter orange-red for dark theme */
+                --section-title-color: #4dd0e1; /* Lighter teal-blue */
+                --text-primary: #e2e8f0;        /* Light slate */
+                --text-secondary: #cbd5e1;      /* Lighter gray */
+                --text-tertiary: #94a3b8;       /* Medium gray */
+                --accent-color: #5dd3e8;        /* Brighter teal accent */
+                --border-color: #334155;        /* Dark slate borders */
+                --bg-subtle: #1e293b;          /* Dark slate background */
+                --bg-primary: #0f172a;         /* Very dark blue background */
+                --bg-secondary: #1e293b;       /* Dark slate for cards */
+                --text-body: #e2e8f0;          /* Light text */
+                --link-color: #5dd3e8;          /* Brighter link color for dark theme */
+            }
+        }
+        
         body {
             font-family: 'Open Sans', Verdana, sans-serif;
             line-height: 1.6;
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
-            color: #e0e0e0;
-            background-color: #1e1e1e;
+            color: var(--text-body);
+            background-color: var(--bg-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         h1, h2, h3 {
             font-family: 'Montserrat', Arial, sans-serif;
-            color: #66ccff;
+            color: var(--section-title-color);
         }
         h1 {
             margin-bottom: 10px;
@@ -34,30 +65,39 @@
             display: inline-block;
             margin-bottom: 30px;
             padding: 10px 20px;
-            background-color: #2a2a2a;
+            background-color: var(--bg-secondary);
             color: var(--section-title-color);
             text-decoration: none;
             border-radius: 4px;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
         }
         .back-link:hover {
-            background-color: #333;
+            background-color: var(--bg-subtle);
+            border-color: var(--accent-color);
         }
         .paper-info {
-            background-color: #2a2a2a;
+            background-color: var(--bg-secondary);
             padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        @media (prefers-color-scheme: dark) {
+            .paper-info {
+                box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
         }
         .paper-title {
             font-size: 1.4em;
             font-weight: bold;
-            color: #fff;
+            color: var(--text-primary);
             margin-bottom: 15px;
         }
         .paper-authors {
-            color: #b0b0b0;
+            color: var(--text-secondary);
             font-style: italic;
             margin-bottom: 10px;
         }
@@ -66,15 +106,24 @@
             font-weight: 500;
         }
         .abstract {
-            background-color: #2a2a2a;
+            background-color: var(--bg-secondary);
             padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
             border-left: 4px solid var(--section-title-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        @media (prefers-color-scheme: dark) {
+            .abstract {
+                box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
         }
         .abstract h3 {
             margin-top: 0;
             color: var(--section-title-color);
+        }
+        .abstract p {
+            color: var(--text-body);
         }
         .content-section {
             margin: 30px 0;
@@ -85,6 +134,7 @@
         }
         .content-section p {
             margin: 15px 0;
+            color: var(--text-body);
         }
         .figure-container {
             text-align: center;
@@ -96,28 +146,48 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
+        @media (prefers-color-scheme: dark) {
+            .figure-container img {
+                box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            }
+        }
         .figure-caption {
             margin-top: 10px;
             font-style: italic;
-            color: #b0b0b0;
+            color: var(--text-tertiary);
             font-size: 0.9em;
         }
         .highlight-box {
-            background-color: #2a2a2a;
+            background-color: var(--bg-secondary);
             padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
             border-left: 4px solid var(--name-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        @media (prefers-color-scheme: dark) {
+            .highlight-box {
+                box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
         }
         .highlight-box h4 {
             color: var(--name-color);
             margin-top: 0;
         }
+        .highlight-box p {
+            color: var(--text-body);
+        }
         .method-steps {
-            background-color: #2a2a2a;
+            background-color: var(--bg-secondary);
             padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
+            transition: background-color 0.3s ease;
+        }
+        @media (prefers-color-scheme: dark) {
+            .method-steps {
+                box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
         }
         .method-steps h4 {
             color: var(--section-title-color);
@@ -128,6 +198,7 @@
         }
         .method-steps li {
             margin: 10px 0;
+            color: var(--text-body);
         }
         .tags {
             display: flex;
@@ -148,25 +219,42 @@
             background-color: #FDD7E4;
             color: #333333;
         }
+        @media (prefers-color-scheme: dark) {
+            .tag.ai {
+                color: #1e293b;
+            }
+        }
         .tag.interpretability {
             background-color: #8B5CF6;
             color: #ffffff;
         }
         .equation {
-            background-color: #2a2a2a;
+            background-color: var(--bg-secondary);
             padding: 15px;
             border-radius: 8px;
             margin: 20px 0;
             text-align: center;
             font-family: 'Courier New', monospace;
-            color: #fff;
+            color: var(--text-primary);
+            transition: background-color 0.3s ease;
+        }
+        @media (prefers-color-scheme: dark) {
+            .equation {
+                box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
         }
         .key-findings {
-            background-color: #2a2a2a;
+            background-color: var(--bg-secondary);
             padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
             border-left: 4px solid #10b981;
+            transition: background-color 0.3s ease;
+        }
+        @media (prefers-color-scheme: dark) {
+            .key-findings {
+                box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
         }
         .key-findings h4 {
             color: #10b981;
@@ -177,6 +265,10 @@
         }
         .key-findings li {
             margin: 10px 0;
+            color: var(--text-body);
+        }
+        p {
+            color: var(--text-body);
         }
     </style>
 </head>
