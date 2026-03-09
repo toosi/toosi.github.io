@@ -6,26 +6,58 @@
     <title>Cosyne 2026 Poster - Tahereh Toosi</title>
     <style>
         :root {
-            --name-color: #ff6781;
-            --section-title-color: #80cbc4;
+            /* Light theme (default) */
+            --name-color: #fc5203;
+            --section-title-color: #006699;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-tertiary: #64748b;
+            --accent-color: #0088aa;
+            --border-color: #e2e8f0;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9f9f9;
+            --bg-card: #f0f2f5;
+            --text-body: #333333;
+            --link-color: #5b8a9f;
         }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --name-color: #ff6b3d;
+                --section-title-color: #4dd0e1;
+                --text-primary: #e2e8f0;
+                --text-secondary: #cbd5e1;
+                --text-tertiary: #94a3b8;
+                --accent-color: #5dd3e8;
+                --border-color: #334155;
+                --bg-primary: #0f172a;
+                --bg-secondary: #1e293b;
+                --bg-card: #334155;
+                --text-body: #e2e8f0;
+                --link-color: #5dd3e8;
+            }
+        }
+
         body {
             font-family: 'Open Sans', Verdana, sans-serif;
             line-height: 1.6;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
-            color: #e0e0e0;
-            background-color: #1e1e1e;
+            color: var(--text-body);
+            background-color: var(--bg-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .back-link {
             display: inline-block;
             margin-bottom: 20px;
-            color: #66ccff;
+            color: var(--section-title-color);
             text-decoration: none;
+            transition: color 0.2s ease;
         }
         .back-link:hover {
             text-decoration: underline;
+            color: var(--accent-color);
         }
         h1, h2, h3 {
             font-family: 'Montserrat', Arial, sans-serif;
@@ -37,27 +69,35 @@
             font-size: 1.8em;
         }
         .subtitle {
-            color: #b0b0b0;
+            color: var(--text-tertiary);
             font-size: 1em;
             margin-bottom: 25px;
         }
         .subtitle a {
-            color: #66ccff;
+            color: var(--link-color);
             text-decoration: none;
         }
         .subtitle a:hover {
             text-decoration: underline;
+            color: var(--accent-color);
         }
         .content {
-            background-color: #2a2a2a;
+            background-color: var(--bg-secondary);
             padding: 25px;
-            border-radius: 8px;
+            border-radius: 12px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        @media (prefers-color-scheme: dark) {
+            .content {
+                box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
         }
         .conference-badge {
             display: inline-block;
-            background-color: #ff6781;
-            color: #1e1e1e;
+            background-color: var(--name-color);
+            color: #ffffff;
             font-size: 0.55em;
             font-weight: 600;
             padding: 3px 10px;
@@ -66,25 +106,20 @@
             vertical-align: middle;
         }
 
-        /* Two-column layout */
+        /* Stacked layout: agent on top, poster below */
         .poster-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 25px;
             margin-top: 20px;
-            align-items: start;
-        }
-        @media (max-width: 768px) {
-            .poster-layout {
-                grid-template-columns: 1fr;
-            }
         }
 
         /* Poster panel */
         .poster-panel {
-            background-color: #333;
+            background-color: var(--bg-card);
             border-radius: 8px;
             overflow: hidden;
+            border: 1px solid var(--border-color);
         }
         .poster-panel img {
             width: 100%;
@@ -92,6 +127,9 @@
             display: block;
             cursor: pointer;
             transition: opacity 0.2s;
+            border-radius: 0;
+            box-shadow: none;
+            margin: 0;
         }
         .poster-panel img:hover {
             opacity: 0.9;
@@ -103,26 +141,27 @@
             justify-content: center;
         }
         .poster-actions a {
-            color: #66ccff;
+            color: var(--link-color);
             text-decoration: none;
             font-size: 0.85em;
             padding: 6px 14px;
-            border: 1px solid #66ccff;
+            border: 1px solid var(--link-color);
             border-radius: 4px;
             transition: background-color 0.2s, color 0.2s;
         }
         .poster-actions a:hover {
-            background-color: #66ccff;
-            color: #1e1e1e;
+            background-color: var(--link-color);
+            color: var(--bg-primary);
         }
 
         /* Agent panel */
         .agent-panel {
-            background-color: #333;
+            background-color: var(--bg-card);
             border-radius: 8px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            border: 1px solid var(--border-color);
         }
         .agent-panel iframe {
             width: 100%;
@@ -135,10 +174,10 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 600px;
+            min-height: 400px;
             padding: 30px;
             text-align: center;
-            color: #b0b0b0;
+            color: var(--text-tertiary);
         }
         .agent-placeholder .agent-icon {
             font-size: 3em;
@@ -155,34 +194,61 @@
             font-weight: 600;
             margin-bottom: 10px;
         }
-
-        /* Abstract section */
-        .abstract {
-            margin-top: 30px;
-            padding-top: 25px;
-            border-top: 1px solid #444;
+        .agent-placeholder a {
+            color: var(--link-color);
         }
-        .abstract p {
-            color: #ccc;
-            font-size: 0.95em;
+        .agent-busy {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            padding: 30px;
+            text-align: center;
+            color: var(--text-tertiary);
         }
-        .findings-list {
-            margin-top: 15px;
+        .agent-busy .busy-icon {
+            font-size: 2em;
+            margin-bottom: 12px;
         }
-        .finding {
-            margin-bottom: 15px;
-            padding-left: 15px;
-            border-left: 3px solid #80cbc4;
-        }
-        .finding strong {
+        .agent-busy .busy-title {
             color: var(--section-title-color);
-            display: block;
-            margin-bottom: 3px;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 1.05em;
+            font-weight: 600;
+            margin-bottom: 8px;
         }
-        .finding p {
-            margin: 0;
-            color: #ccc;
+        .agent-busy p {
+            margin: 4px 0;
             font-size: 0.9em;
+        }
+        .agent-busy .retry-btn {
+            margin-top: 15px;
+            padding: 8px 20px;
+            background: none;
+            border: 1px solid var(--link-color);
+            color: var(--link-color);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .agent-busy .retry-btn:hover {
+            background-color: var(--link-color);
+            color: var(--bg-primary);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            margin: 20px 0;
+        }
+        @media (prefers-color-scheme: dark) {
+            img {
+                box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            }
         }
     </style>
 </head>
@@ -195,6 +261,112 @@
         <a href="https://www.biorxiv.org/content/10.1101/2025.10.29.685363v1.abstract" target="_blank">Paper on bioRxiv</a></p>
 
         <div class="poster-layout">
+            <div class="agent-panel">
+                <!-- Live conversation iframe (hidden until session starts) -->
+                <div id="agent-live" style="display: none;">
+                    <iframe id="tavus-iframe" src="" allow="camera;microphone"></iframe>
+                </div>
+
+                <!-- Default state: invite visitor to start a conversation -->
+                <div class="agent-placeholder" id="agent-placeholder">
+                    <div class="agent-icon">&#x1f399;</div>
+                    <p class="agent-title">Interactive Poster Agent</p>
+                    <p>Ask questions about the poster, methods, or findings.</p>
+                    <p>Powered by <a href="https://www.tavus.io" target="_blank">Tavus</a> conversational video AI.</p>
+                    <button class="retry-btn" style="margin-top: 15px;" onclick="startConversation()">Start conversation</button>
+                </div>
+
+                <!-- Loading state -->
+                <div class="agent-placeholder" id="agent-loading" style="display: none;">
+                    <div class="agent-icon">&#x23F3;</div>
+                    <p class="agent-title">Connecting to poster agent...</p>
+                    <p>This may take a few seconds.</p>
+                </div>
+
+                <!-- Error: all slots busy -->
+                <div class="agent-busy" id="agent-busy">
+                    <div class="busy-icon">&#x23F3;</div>
+                    <p class="busy-title">The AI presenter is currently in conversation</p>
+                    <p>All conversation slots are occupied right now.</p>
+                    <p>Sessions are typically short — please try again in a minute or two.</p>
+                    <p style="margin-top: 10px;">In the meantime, you can explore the poster below or <a href="../assets/posters/cosyne2026_poster.pdf" target="_blank">view the full PDF</a>.</p>
+                    <button class="retry-btn" onclick="startConversation()">Try again</button>
+                </div>
+
+                <!-- Error: generic failure -->
+                <div class="agent-placeholder" id="agent-error" style="display: none;">
+                    <div class="agent-icon">&#x26A0;</div>
+                    <p class="agent-title">Could not connect</p>
+                    <p id="agent-error-msg">Something went wrong. Please try again later.</p>
+                    <button class="retry-btn" style="margin-top: 15px;" onclick="startConversation()">Try again</button>
+                </div>
+            </div>
+
+            <script>
+                // -------------------------------------------------------
+                // Tavus Agent — API-based conversation creation
+                // -------------------------------------------------------
+                // TODO: Replace with your Vercel deployment URL
+                var PROXY_URL = 'https://tavus-proxy-one.vercel.app/api/create-conversation';
+
+                function showPanel(panelId) {
+                    ['agent-placeholder', 'agent-loading', 'agent-live', 'agent-busy', 'agent-error'].forEach(function(id) {
+                        document.getElementById(id).style.display = 'none';
+                    });
+                    var el = document.getElementById(panelId);
+                    el.style.display = (panelId === 'agent-live') ? 'block' : 'flex';
+                }
+
+                async function startConversation() {
+                    if (!PROXY_URL) {
+                        console.log('PROXY_URL not configured. Falling back to placeholder.');
+                        return;
+                    }
+
+                    showPanel('agent-loading');
+
+                    try {
+                        var response = await fetch(PROXY_URL, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                        });
+
+                        var data = await response.json();
+
+                        if (!response.ok) {
+                            // Check if it's a capacity issue (HTTP 429 or similar)
+                            if (response.status === 429 || (data.detail && data.detail.includes('concurrent'))) {
+                                console.log('All conversation slots busy. Showing busy panel.');
+                                showPanel('agent-busy');
+                            } else {
+                                console.log('Tavus API returned error:', response.status, data.detail || data.error, '- Falling back to error panel.');
+                                document.getElementById('agent-error-msg').textContent =
+                                    data.error || 'Something went wrong. Please try again later.';
+                                showPanel('agent-error');
+                            }
+                            return;
+                        }
+
+                        if (!data.conversation_url) {
+                            console.log('No conversation_url in response. Falling back to error panel.');
+                            showPanel('agent-error');
+                            return;
+                        }
+
+                        // Load the conversation into the iframe
+                        var iframe = document.getElementById('tavus-iframe');
+                        iframe.src = data.conversation_url;
+                        showPanel('agent-live');
+
+                    } catch (err) {
+                        console.log('Network error calling proxy:', err.message, '- Falling back to error panel.');
+                        document.getElementById('agent-error-msg').textContent =
+                            'Network error. Please check your connection and try again.';
+                        showPanel('agent-error');
+                    }
+                }
+            </script>
+
             <div class="poster-panel">
                 <a href="../assets/posters/cosyne2026_poster.pdf" target="_blank">
                     <img src="../assets/posters/cosyne2026_poster.png" alt="Cosyne 2026 Poster: Natural Scene Coding Consistency in Genetically-Defined Cell Populations">
@@ -203,43 +375,8 @@
                     <a href="../assets/posters/cosyne2026_poster.pdf" target="_blank">View full PDF</a>
                 </div>
             </div>
-
-            <div class="agent-panel">
-                <!-- Replace the placeholder below with Tavus iframe once you have the conversation URL -->
-                <!-- <iframe src="YOUR_TAVUS_CONVERSATION_URL" allow="camera;microphone"></iframe> -->
-                <div class="agent-placeholder">
-                    <div class="agent-icon">&#x1f399;</div>
-                    <p class="agent-title">Interactive Poster Agent</p>
-                    <p>Ask questions about the poster, methods, or findings.</p>
-                    <p>Powered by <a href="https://www.tavus.io" target="_blank" style="color: #80cbc4;">Tavus</a> conversational video AI.</p>
-                    <p style="margin-top: 15px; font-size: 0.85em; color: #888;">Coming soon. Check back for the live agent.</p>
-                </div>
-            </div>
         </div>
 
-        <div class="abstract">
-            <h2>Summary</h2>
-            <p>We analyzed 43,018 neurons across 12 Cre lines in 243 mice (Allen Brain Observatory), computing pairwise representational similarity (linear CKA) across 100+ populations under four stimulus conditions.</p>
-
-            <div class="findings-list">
-                <div class="finding">
-                    <strong>Inhibitory populations cluster by cell type, not anatomy.</strong>
-                    <p>SST, VIP, and PV form distinct groups for natural scenes but not gratings, regardless of visual area or cortical layer.</p>
-                </div>
-                <div class="finding">
-                    <strong>Natural scenes and natural movies produce consistent cell-type coding structure.</strong>
-                    <p>Layer 5/6 excitatory types (Tlx3, Fezf2, Ntsr1) show high mutual similarity. Nr5a1, also layer 5, does not. Cortical layer alone does not determine population coding.</p>
-                </div>
-                <div class="finding">
-                    <strong>Shared representational structure is driven by fidelity to sensory input.</strong>
-                    <p>Pixel-level analysis shows populations with high mutual similarity also preserve the geometry of the high-dimensional visual input. Layer 5/6 excitatory cells and VIP show highest similarity; Nr5a1 does not.</p>
-                </div>
-                <div class="finding">
-                    <strong>Cross-animal consistency is stimulus-selective.</strong>
-                    <p>Most cell types show higher mouse-to-mouse representational similarity for natural scenes than gratings (all p&lt;0.001). Nr5a1 shows no difference (p=0.50), consistent with its specialization for dynamic features.</p>
-                </div>
-            </div>
-        </div>
     </div>
 </body>
 </html>
