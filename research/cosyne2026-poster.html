@@ -154,7 +154,28 @@
             color: var(--bg-primary);
         }
 
-        /* Agent panel */
+        /* Video overview panel */
+        .video-panel {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .video-panel video,
+        .video-panel iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            display: block;
+            border: none;
+        }
+        .video-caption {
+            padding: 12px 16px;
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+        }
+
+        /* Q&A agent panel */
         .agent-panel {
             background-color: var(--bg-card);
             border-radius: 8px;
@@ -174,14 +195,14 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 400px;
+            min-height: 180px;
             padding: 30px;
             text-align: center;
             color: var(--text-tertiary);
         }
         .agent-placeholder .agent-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
+            font-size: 2.5em;
+            margin-bottom: 12px;
         }
         .agent-placeholder p {
             margin: 5px 0;
@@ -197,12 +218,29 @@
         .agent-placeholder a {
             color: var(--link-color);
         }
+        .start-qa-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 24px;
+            background-color: var(--section-title-color);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        .start-qa-btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-1px);
+        }
         .agent-busy {
             display: none;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 200px;
+            min-height: 180px;
             padding: 30px;
             text-align: center;
             color: var(--text-tertiary);
@@ -261,19 +299,26 @@
         <a href="https://www.biorxiv.org/content/10.1101/2025.10.29.685363v1.abstract" target="_blank">Paper on bioRxiv</a></p>
 
         <div class="poster-layout">
+            <!-- 1. Video overview (free, no credits used) -->
+            <div class="video-panel">
+                <iframe src="https://tavus.video/6fa0b3dfe0" allowfullscreen></iframe>
+                <p class="video-caption">2-minute poster overview</p>
+            </div>
+
+            <!-- 2. Interactive Q&A agent -->
             <div class="agent-panel">
                 <!-- Live conversation iframe (hidden until session starts) -->
                 <div id="agent-live" style="display: none;">
                     <iframe id="tavus-iframe" src="" allow="camera;microphone"></iframe>
                 </div>
 
-                <!-- Default state: invite visitor to start a conversation -->
+                <!-- Default state: invite visitor to start Q&A -->
                 <div class="agent-placeholder" id="agent-placeholder">
-                    <div class="agent-icon">&#x1f399;</div>
-                    <p class="agent-title">Interactive Poster Agent</p>
-                    <p>Ask questions about the poster, methods, or findings.</p>
-                    <p>Powered by <a href="https://www.tavus.io" target="_blank">Tavus</a> conversational video AI.</p>
-                    <button class="retry-btn" style="margin-top: 15px;" onclick="startConversation()">Start conversation</button>
+                    <div class="agent-icon">&#x1f4ac;</div>
+                    <p class="agent-title">Have questions? Start an interactive Q&A</p>
+                    <p>Talk to the AI poster agent about the methods, findings, or any of the five panels.</p>
+                    <button class="start-qa-btn" onclick="startConversation()">Start interactive Q&A</button>
+                    <p style="margin-top: 10px; font-size: 0.8em;">Powered by <a href="https://www.tavus.io" target="_blank">Tavus</a> conversational video AI</p>
                 </div>
 
                 <!-- Loading state -->
@@ -306,7 +351,6 @@
                 // -------------------------------------------------------
                 // Tavus Agent — API-based conversation creation
                 // -------------------------------------------------------
-                // TODO: Replace with your Vercel deployment URL
                 var PROXY_URL = 'https://tavus-proxy-one.vercel.app/api/create-conversation';
 
                 function showPanel(panelId) {
@@ -334,7 +378,6 @@
                         var data = await response.json();
 
                         if (!response.ok) {
-                            // Check if it's a capacity issue (HTTP 429 or similar)
                             if (response.status === 429 || (data.detail && data.detail.includes('concurrent'))) {
                                 console.log('All conversation slots busy. Showing busy panel.');
                                 showPanel('agent-busy');
@@ -353,7 +396,6 @@
                             return;
                         }
 
-                        // Load the conversation into the iframe
                         var iframe = document.getElementById('tavus-iframe');
                         iframe.src = data.conversation_url;
                         showPanel('agent-live');
@@ -367,6 +409,7 @@
                 }
             </script>
 
+            <!-- 3. Poster image -->
             <div class="poster-panel">
                 <a href="../assets/posters/cosyne2026_poster.pdf" target="_blank">
                     <img src="../assets/posters/cosyne2026_poster.png" alt="Cosyne 2026 Poster: Natural Scene Coding Consistency in Genetically-Defined Cell Populations">
