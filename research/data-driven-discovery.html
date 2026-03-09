@@ -154,6 +154,57 @@
         a[style*="color: #66ccff"] {
             color: var(--link-color) !important;
         }
+
+        .poster-link-card {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 8px;
+            border-left: 3px solid #ff6781;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: background-color 0.2s;
+        }
+        .poster-link-card:hover {
+            background-color: #3a3a3a;
+        }
+        .poster-link-card img {
+            width: 120px;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: none;
+            margin: 0;
+            flex-shrink: 0;
+        }
+        .poster-link-card .card-text {
+            flex: 1;
+        }
+        .poster-link-card .card-title {
+            font-family: 'Montserrat', Arial, sans-serif;
+            color: var(--section-title-color);
+            font-weight: 600;
+            font-size: 1em;
+            margin-bottom: 4px;
+        }
+        .poster-link-card .card-desc {
+            color: #b0b0b0;
+            font-size: 0.85em;
+            margin: 0;
+        }
+        .conference-badge {
+            display: inline-block;
+            background-color: #ff6781;
+            color: #1e1e1e;
+            font-size: 0.7em;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body>
@@ -168,6 +219,14 @@
         
         <img src="../assets/cell_types_geometry.jpg" alt="Cell types geometry" style="width:100%;max-width:800px;display:block;margin:20px auto 0 auto;">
         
+        <a href="cosyne2026-poster.html" class="poster-link-card">
+            <img src="../assets/posters/cosyne2026_poster.png" alt="Cosyne 2026 Poster thumbnail">
+            <div class="card-text">
+                <div class="card-title">Poster Presentation <span class="conference-badge">Cosyne 2026</span></div>
+                <p class="card-desc">View the poster and talk to an interactive AI agent about the findings. Cascais, Portugal.</p>
+            </div>
+        </a>
+
         <h2>Related Publications</h2>
         <div class="publications">
             <div class="publication">

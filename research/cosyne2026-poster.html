@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosyne 2026 Poster - Tahereh Toosi</title>
+    <style>
+        :root {
+            --name-color: #ff6781;
+            --section-title-color: #80cbc4;
+        }
+        body {
+            font-family: 'Open Sans', Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #e0e0e0;
+            background-color: #1e1e1e;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #66ccff;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', Arial, sans-serif;
+            color: var(--section-title-color);
+        }
+        h1 {
+            color: var(--name-color);
+            margin-bottom: 5px;
+            font-size: 1.8em;
+        }
+        .subtitle {
+            color: #b0b0b0;
+            font-size: 1em;
+            margin-bottom: 25px;
+        }
+        .subtitle a {
+            color: #66ccff;
+            text-decoration: none;
+        }
+        .subtitle a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            background-color: #2a2a2a;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .conference-badge {
+            display: inline-block;
+            background-color: #ff6781;
+            color: #1e1e1e;
+            font-size: 0.55em;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        /* Two-column layout */
+        .poster-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 20px;
+            align-items: start;
+        }
+        @media (max-width: 768px) {
+            .poster-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Poster panel */
+        .poster-panel {
+            background-color: #333;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .poster-panel img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .poster-panel img:hover {
+            opacity: 0.9;
+        }
+        .poster-actions {
+            padding: 12px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .poster-actions a {
+            color: #66ccff;
+            text-decoration: none;
+            font-size: 0.85em;
+            padding: 6px 14px;
+            border: 1px solid #66ccff;
+            border-radius: 4px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .poster-actions a:hover {
+            background-color: #66ccff;
+            color: #1e1e1e;
+        }
+
+        /* Agent panel */
+        .agent-panel {
+            background-color: #333;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .agent-panel iframe {
+            width: 100%;
+            min-height: 600px;
+            border: none;
+            flex: 1;
+        }
+        .agent-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 600px;
+            padding: 30px;
+            text-align: center;
+            color: #b0b0b0;
+        }
+        .agent-placeholder .agent-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        .agent-placeholder p {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+        .agent-placeholder .agent-title {
+            color: var(--section-title-color);
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Abstract section */
+        .abstract {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid #444;
+        }
+        .abstract p {
+            color: #ccc;
+            font-size: 0.95em;
+        }
+        .findings-list {
+            margin-top: 15px;
+        }
+        .finding {
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 3px solid #80cbc4;
+        }
+        .finding strong {
+            color: var(--section-title-color);
+            display: block;
+            margin-bottom: 3px;
+        }
+        .finding p {
+            margin: 0;
+            color: #ccc;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <a href="data-driven-discovery.html" class="back-link">&larr; Back to Data-Driven Discovery</a>
+
+    <div class="content">
+        <h1>Natural Scene Coding Consistency in Genetically-Defined Cell Populations <span class="conference-badge">Cosyne 2026</span></h1>
+        <p class="subtitle">Tahereh Toosi &amp; Kenneth D. Miller &middot; Columbia University &middot; Cosyne 2026, Cascais, Portugal<br>
+        <a href="https://www.biorxiv.org/content/10.1101/2025.10.29.685363v1.abstract" target="_blank">Paper on bioRxiv</a></p>
+
+        <div class="poster-layout">
+            <div class="poster-panel">
+                <a href="../assets/posters/cosyne2026_poster.pdf" target="_blank">
+                    <img src="../assets/posters/cosyne2026_poster.png" alt="Cosyne 2026 Poster: Natural Scene Coding Consistency in Genetically-Defined Cell Populations">
+                </a>
+                <div class="poster-actions">
+                    <a href="../assets/posters/cosyne2026_poster.pdf" target="_blank">View full PDF</a>
+                </div>
+            </div>
+
+            <div class="agent-panel">
+                <!-- Replace the placeholder below with Tavus iframe once you have the conversation URL -->
+                <!-- <iframe src="YOUR_TAVUS_CONVERSATION_URL" allow="camera;microphone"></iframe> -->
+                <div class="agent-placeholder">
+                    <div class="agent-icon">&#x1f399;</div>
+                    <p class="agent-title">Interactive Poster Agent</p>
+                    <p>Ask questions about the poster, methods, or findings.</p>
+                    <p>Powered by <a href="https://www.tavus.io" target="_blank" style="color: #80cbc4;">Tavus</a> conversational video AI.</p>
+                    <p style="margin-top: 15px; font-size: 0.85em; color: #888;">Coming soon. Check back for the live agent.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="abstract">
+            <h2>Summary</h2>
+            <p>We analyzed 43,018 neurons across 12 Cre lines in 243 mice (Allen Brain Observatory), computing pairwise representational similarity (linear CKA) across 100+ populations under four stimulus conditions.</p>
+
+            <div class="findings-list">
+                <div class="finding">
+                    <strong>Inhibitory populations cluster by cell type, not anatomy.</strong>
+                    <p>SST, VIP, and PV form distinct groups for natural scenes but not gratings, regardless of visual area or cortical layer.</p>
+                </div>
+                <div class="finding">
+                    <strong>Natural scenes and natural movies produce consistent cell-type coding structure.</strong>
+                    <p>Layer 5/6 excitatory types (Tlx3, Fezf2, Ntsr1) show high mutual similarity. Nr5a1, also layer 5, does not. Cortical layer alone does not determine population coding.</p>
+                </div>
+                <div class="finding">
+                    <strong>Shared representational structure is driven by fidelity to sensory input.</strong>
+                    <p>Pixel-level analysis shows populations with high mutual similarity also preserve the geometry of the high-dimensional visual input. Layer 5/6 excitatory cells and VIP show highest similarity; Nr5a1 does not.</p>
+                </div>
+                <div class="finding">
+                    <strong>Cross-animal consistency is stimulus-selective.</strong>
+                    <p>Most cell types show higher mouse-to-mouse representational similarity for natural scenes than gratings (all p&lt;0.001). Nr5a1 shows no difference (p=0.50), consistent with its specialization for dynamic features.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
